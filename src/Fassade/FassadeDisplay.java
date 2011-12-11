@@ -1,0 +1,119 @@
+package Fassade;
+
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import LagerSysGui.CommandAction;
+import LagerSysGui.Display;
+import LagerSysGui.InsertAction;
+import LagerSysPrg.*;
+import Simulation.*;
+
+/**
+ * @author Tanveer Ahmed s680338
+ * @version 1.0
+ * @created 01-Jun-2011 15:44:59
+ */
+public class FassadeDisplay {
+
+	/**
+	 * static boolean codeOK(){  return true;  }
+	 */
+
+	public FassadeDisplay(){
+
+	}
+
+	public void finalize() throws Throwable {
+
+	}
+
+	public static void auslagern(){
+//		Display.StatusField.setText("Abholen: Bitte Code eingeben");
+//     	Display.CodeField.setText("");
+//   		InsertAction.freigabe=true;
+//   		CommandAction.freigabe=true;
+   		//freigabe=true;
+     	
+//   		if (CommandAction.CodeOK){
+     		System.out.println( "Auslagern: Preis und Lagerzeit ermitteln");
+     		
+//     		Display.PreisField.setText("Preis");
+//    		Display.ZeitField.setText("Lagerzeit");
+    	
+    		System.out.println( "Auslagern: Geld pruefen");
+    		System.out.println( "Auslagern: starte Stapler");
+        		
+//    		TestSim T = new TestSim();
+//    		T.fahre(T.LP1);
+    		
+    		System.out.println( "Auslagern: Klappe oeffnen");
+    		System.out.println( "Auslagern: Packet entnommen");
+    		System.out.println( "Auslagern: Klappe schliessen");
+    		System.out.println( "Auslagern: Auslagern beendet");
+//  	  		Display.StatusField.setText("Abholen: Aufwiedersehen");
+//  	  	InsertAction.freigabe=false;
+//   		CommandAction.freigabe=false;
+//   		}
+   		
+	}
+
+	/*public static void bestaetigt(){
+		InsertAction.freigabe=true;
+ 		CommandAction.freigabe=true;
+ 		int CodeListe=222; // Test Codes
+ 		
+   		if (Integer.parseInt(Display.CodeField.getText())==CodeListe){
+   			System.out.println( "Auslagern: Code Akzeptiert");
+      	  Display.StatusField.setText("Eingabe Bestaetigt");
+      	  	CodeOK=true;
+      	  auslagern();	
+   		}else{
+   			Display.StatusField.setText("Code nicht Akzeptiert");
+   			CodeOK=false;
+   			auslagern();
+   		}
+   		InsertAction.freigabe=false;
+   		CommandAction.freigabe=false;
+   		//codeOK();
+   		//auslagern();
+   		//freigabe=false;
+
+	}*/
+
+	public static void einlagern(){
+//		 Display.StatusField.setText("Einlagern: Bitte legen Sie Packet ein");
+//	  	  Display.CodeField.setText("code berechnen");
+	  	  
+//	  	Date dt = new Date();
+	  	// Festlegung des Formats:
+//	  	SimpleDateFormat df = new SimpleDateFormat( "dd-MM-yyyy HH:mm:ss" );
+//	  	SimpleDateFormat time = new SimpleDateFormat("HH:mm");
+	     	// Formatierung zu String:
+//	  	System.out.println( "Einlagern: Date = " + df.format( dt ) );        // z.B. '2001-01-26 19:03:56.731'
+	  	
+//	  	Display.ZeitField.setText(time.format(dt));
+	  	
+	  	System.out.println( "Einlagern: Klappe šffnen");
+	  	System.out.println( "Einlagern: Packet eingelegt");
+	  	System.out.println( "Einlagern: Klappe schliessen");
+	  	System.out.println( "Einlagern: Packetgroesse ermitteln");
+	  	System.out.println( "Einlagern: Gewicht ermitteln");
+	  	System.out.println( "Einlagern: starte Gabel");
+	  	System.out.println( "Einlagern: Beleg drucken");
+	  	System.out.println( "Einlagern: einlagern beendet");
+	  	
+//		  Display.StatusField.setText("Einlagern: Beleg entnehmen");
+
+	}
+
+	/**
+	 * 
+	 * @param args    args
+	 */
+	public static void main(String[] args){
+
+	}
+
+}
