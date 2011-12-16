@@ -6,7 +6,7 @@ package LagerSysPrg;
  * @version 1.0
  * @created 01-Jun-2011 15:44:59
  */
-public class KlappenTür {
+public class KlappenTuer {
 
 	public Motor m_Motor;
 	public Taster m_Taster;
@@ -15,7 +15,7 @@ public class KlappenTür {
 	public Taster Taster_auf;
 	public Taster Taster_zu;
 
-	public KlappenTür(){
+	public KlappenTuer(){
 
 	}
 
@@ -28,7 +28,7 @@ public class KlappenTür {
 
 	}
 
-	public boolean öffnen(){
+	public boolean oeffnen(){
 		return false;
 	}
 
