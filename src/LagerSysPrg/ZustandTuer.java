@@ -5,9 +5,9 @@ package LagerSysPrg;
  * @version 1.0
  * @created 01-Jun-2011 15:44:59
  */
-public class ZustandTür {
+public class ZustandTuer {
 
-	public ZustandTür(){
+	public ZustandTuer(){
 
 	}
 
@@ -20,7 +20,7 @@ public class ZustandTür {
 
 	}
 
-	public void öffnen(){
+	public void Oeffnen(){
 
 	}
 
