@@ -1,44 +1,40 @@
-package Simulation;
-import LagerSysPrg.*;
+package LagerSysPrg;
+
+
 /**
  * @author Tanveer Ahmed s680338
  * @version 1.0
- * @created 10-Jun-2011 15:44:59
+ * @created 01-Jun-2011 15:44:59
  */
-public class Motor extends LagerSysPrg.Motor implements Runnable{
-	boolean running = false;
+public class Motor{
 
-	private String address;
-	
-	//public Motor(){}
-	public Motor(String add){	
-		this.address=add;
-		System.out.println("Sim: Motor "+add+" erstellt");
+	private int Adresse;
+	public MotorRichtung m_MotorRichtung;
+	public MotorStatus m_MotorStatus;
+
+	public Motor(){
+
+	}
+
+/*	public Motor(String title,String add){
+
+	}
+	*/
+	public void finalize()
+	  throws Throwable{
+
 	}
 
 	public void Aus(){
-		System.out.println("Sim: Motor "+address+" : Aus");
-		running = false;
+
 	}
-	public void Ein(char richtung){
-		System.out.println("Sim: Motor "+address+" : : Ein");
-		SetRichtung(richtung);
-		//super.start();
+
+	public void Ein(){
+
 	}
-	public void SetRichtung(char richtung){
-		if (richtung == 'r'){
-			System.out.println("Sim: Motor "+address+" : Richtung Rechts");
-		}
-		if (richtung == 'l'){
-			System.out.println("Sim: Motor "+address+" : Richtung links");
-		}
+
+	public void SetRichtung(){
+
 	}
-	public void run() {
-        	System.out.println("Sim: Motor "+address+" :  Run");
-			running = true;
-	     	while (running == true){
-	        //System.out.println("Motor Run");
-			}
-	    }
 
 }
