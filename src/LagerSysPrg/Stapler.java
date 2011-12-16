@@ -1,66 +1,181 @@
 
 package LagerSysPrg;
-import Simulation.*;
 
-/**
- * @author Tanveer Ahmed s680338
- * @version 1.0
- * @created 01-Jun-2011 15:44:59
- */
 public class Stapler {
-	public Lagerplatz[] m_Lagerplatz;
-	public Laufband m_Laufband;
+	public Lagerplatz[] Lagerplatzarray;
+	public Laufband laufband;
+	public int LaufbandMotorAdresse; 
 	
-	public Motor m_Motor_x;
-	public Motor m_Motor_y;
+	private Motor motorXRichtung;
+	private static int motorXRichtungAdresse; 
+	private Motor motorYRichtung;
+	private static int motorYRichtungAdresse; 
 	
-	public Simulation.Motor s_Motor_x;
-	public Simulation.Motor s_Motor_y;
+	public Simulation.Motor motorXRichtungSimulation;
+	public Simulation.Motor motorYRichtungSimulation;
 	
-	String Addresse;
-	
-	public Stapler(String SAdd, String MAdd1, String MAdd2, String L_Add, String LM_Add){
-		this.Addresse= SAdd;
-		System.out.println("Sim: "+SAdd+" erstellt");
-		s_Motor_x = new Simulation.Motor(MAdd1);
-		s_Motor_y = new Simulation.Motor(MAdd2);
-		m_Laufband = new Laufband(L_Add, LM_Add);
-	}
+	private static int StaplerAdresseDefault = 0;
+	private int StaplerAdresse;
+	private boolean MotorfaehrtinXRichtung = false; 
+	private boolean MotorfaehrtinXRichtungrueckwarts = false; 
+	private boolean MotorfaehrtinYRichtunghoch = false;
+	private int MotorStatus; 
 	
 	public Stapler(){
-		m_Motor_x = new Motor();
-		m_Motor_y = new Motor();
-		m_Laufband = new Laufband();
+		this.StaplerAdresse = ErstelleStaplerAdresse();
+		motorXRichtung = new Motor(); 
+		motorXRichtungAdresse = motorXRichtung.GetMotorAdresse();
+		motorYRichtung = new Motor(); 
+		motorYRichtungAdresse = motorYRichtung.GetMotorAdresse(); 
+		motorXRichtungSimulation = new Simulation.Motor(motorXRichtungAdresse);
+		motorYRichtungSimulation = new Simulation.Motor(motorYRichtungAdresse);
+		laufband = new Laufband();
+		LaufbandMotorAdresse = laufband.Motor_AdresseLaufband; 
+		
+		StaplerfaehrtzurAusgabezurueck(); 
+		
 	}
 	
-
-
-	/**
-	 * 
-	 * @exception Throwable Throwable
-	 */
+	private int ErstelleStaplerAdresse(){
+		int xteStaplerAdresse = StaplerAdresseDefault +1; 
+		System.out.println("Stapler mit der Adresse " + xteStaplerAdresse + "erstellt.");
+		return xteStaplerAdresse;
+	}
+	
+	public boolean StehtDerMotor(Motor motor){
+		MotorStatus = motor.GetMotorStatus();
+		if(MotorStatus == 0){
+			return true; 
+		}
+		else{
+			return false; 
+		}
+	}
+	
+	public void StaplerRichtunguebergeben(char richtung){
+		if(richtung == 'r'){
+			InXRichtungFahren('r'); 
+		}
+		if(richtung == 'v'){
+			InXRichtungFahren('v'); 
+		}
+		if(richtung == 'h'){
+			InYRichtungfahren('h'); 
+		}
+		if(richtung =='t'){
+			InYRichtungfahren('t'); 
+		}
+	}
+	
 	public void finalize()
 	  throws Throwable{
 
 	}
 
-	public void ablegen(){
 
+	private void Paketaufnehmen(){
+		if(laufband.LaufbandMotor.GetMotorStatus() == 0){
+			laufband.LaufbandMotor.Motorvorwaertsfahrenlassen(LaufbandMotorAdresse); 
+		}
+		else{
+			if(laufband.LaufbandMotor.GetMotorStatus() == 2){
+				laufband.LaufbandMotor.Motorausschalten(LaufbandMotorAdresse); 
+				laufband.LaufbandMotor.Motorvorwaertsfahrenlassen(LaufbandMotorAdresse); 
+			}
+		}
+		System.out.println("Paket liegt auf dem Laufband."); 
+		laufband.LaufbandMotor.Motorausschalten(LaufbandMotorAdresse); 
+		StaplerfahertmitPaketzumLagerplatz(); 
+	}
+	
+	private void StaplerfahertmitPaketzumLagerplatz(){
+		StaplerRichtunguebergeben('r');
+		System.out.println("Stapler ist am Lagerplatz angekommen.");
+		motorXRichtung.Motorausschalten(motorXRichtungAdresse);
+		Paketablegen(); 		
 	}
 
-	public void aufnehmen(){
-
+	private void Paketablegen(){
+		StaplerRichtunguebergeben('h');
+		laufband.LaufbandMotor.Motorvorwaertsfahrenlassen(LaufbandMotorAdresse); 
+		System.out.println("Paket liegt im Lagerplatz.");
+		laufband.LaufbandMotor.Motorausschalten(LaufbandMotorAdresse);
+		StaplerRichtunguebergeben('t');
+		StaplerfaehrtzurAusgabezurueck(); 
+	}
+	
+	private void StaplerfaehrtzurAusgabezurueck(){
+		StaplerRichtunguebergeben('v');
+		System.out.println("Stapler ist an der Ausgabe angekommen.");
+		motorXRichtung.Motorausschalten(motorXRichtungAdresse);
+	}
+	
+	public boolean FaehrtMotorXRichtungrueckwaerts(){
+		return MotorfaehrtinXRichtungrueckwarts; 
+	}
+	
+	public boolean FaehrtMotorXRichtunghoch(){
+		return MotorfaehrtinYRichtunghoch; 
 	}
 
-	public void fahreX(char richtung){
-		//s_motor_x.Ein(richtung);	
+	public void InXRichtungFahren(char richtung){
+		if(StehtDerMotor(motorXRichtung)){
+			if(richtung == 'r'){
+				motorXRichtung.Motorrueckwaertsfahrenlassen(motorXRichtungAdresse); 
+				MotorfaehrtinXRichtungrueckwarts = true;
+				
+			}
+			if(richtung == 'v'){
+				motorXRichtung.Motorvorwaertsfahrenlassen(motorXRichtungAdresse); 
+				MotorfaehrtinXRichtungrueckwarts = false;
+			}
+		}
+		else{
+			if(motorXRichtung.GetMotorStatus() == 2){
+				motorXRichtung.Motorausschalten(motorXRichtungAdresse); 
+				if(richtung == 'r'){
+					motorXRichtung.Motorrueckwaertsfahrenlassen(motorXRichtungAdresse); 
+					MotorfaehrtinXRichtungrueckwarts = true;
+					
+				}
+				if(richtung == 'v'){
+					motorXRichtung.Motorvorwaertsfahrenlassen(motorXRichtungAdresse); 
+					MotorfaehrtinXRichtungrueckwarts = false;
+				}
+			}
+						
+		}
 	}
 
-	public void fahreY(){
-
+	public void InYRichtungfahren(char richtung){
+		if(StehtDerMotor(motorYRichtung)){
+			if(richtung == 'r'){
+				motorYRichtung.Motorhochfahrenlassen(motorYRichtungAdresse); 
+				MotorfaehrtinYRichtunghoch = true;
+				
+			}
+			if(richtung == 'v'){
+				motorYRichtung.Motorvorwaertsfahrenlassen(motorYRichtungAdresse); 
+				MotorfaehrtinYRichtunghoch = false;
+			}
+		}
+		else{
+			if(motorYRichtung.GetMotorStatus() == 1){
+				motorYRichtung.Motorausschalten(motorYRichtungAdresse);
+				if(richtung == 'r'){
+					motorYRichtung.Motorhochfahrenlassen(motorYRichtungAdresse); 
+					MotorfaehrtinYRichtunghoch = true;
+					
+				}
+				if(richtung == 'v'){
+					motorYRichtung.Motorvorwaertsfahrenlassen(motorYRichtungAdresse); 
+					MotorfaehrtinYRichtunghoch = false;
+				}
+			}			
+		}
 	}
 
-	public boolean setBelegt(){
+	public boolean Paketplatzbelegt(){
 		return false;
 	}
 
