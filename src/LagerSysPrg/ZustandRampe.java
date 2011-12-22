@@ -3,8 +3,7 @@ package LagerSysPrg;
 public class ZustandRampe {
 
 	public IBodenRampeZustand aktuellerZustand; 
-	private int Status; 
-	private boolean istinBewegung = false; 
+	private int Status;  
 	
 	public ZustandRampe(){
 		setzeAktuellenZustand(new gerade(this)); 
@@ -22,6 +21,17 @@ public class ZustandRampe {
 		aktuellerZustand = aktuelleBRZustand; 
 	}
 	
+	public boolean WartenBisBewegungZuende(){
+		try{
+			Thread.sleep(5000); 
+			return false; 
+		}
+		catch(InterruptedException e){
+			e.printStackTrace();
+			return true;
+		}
+	}
+	
 	public  void gerade(){
 		aktuellerZustand.gerade(); 
 	}
@@ -30,14 +40,6 @@ public class ZustandRampe {
 	}
 	public  void stoppen(){
 		aktuellerZustand.stoppen(); 
-	}
-
-	public boolean GetIstinBewegung() {
-		return istinBewegung;
-	}
-
-	public void setIstinBewegung(boolean istinBewegung) {
-		this.istinBewegung = istinBewegung;
 	}
 
 }

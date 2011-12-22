@@ -9,18 +9,14 @@ public class steht implements IBodenRampeZustand {
 	}
 
 	public void gerade() {
-		System.out.println("ZustandRampe: BodenRampe wird nach unten gefahren!"); 
-		Zustand.setIstinBewegung(true);
-		Zustand.setzeAktuellenZustand(new gerade(Zustand));
-		Zustand.setIstinBewegung(false); 
+		System.out.println("ZustandRampe: BodenRampe wird nach unten gefahren!");
+		Zustand.setzeAktuellenZustand(new gerade(Zustand)); 
 		Zustand.setStatus(1); 		
 	}
 
 	public void schraeg() {
 		System.out.println("ZustandRampe: BodenRampe wird angehoben!"); 
-		Zustand.setIstinBewegung(true); 
 		Zustand.setzeAktuellenZustand(new schraeg(Zustand)); 
-		Zustand.setIstinBewegung(false); 
 		Zustand.setStatus(2); 
 		
 	}

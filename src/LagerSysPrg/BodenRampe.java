@@ -32,10 +32,6 @@ public class BodenRampe {
 		return BodenRampeZustand.getStatus(); 
 	}
 	
-	public boolean GetIstInBewegung(){
-		return BodenRampeZustand.GetIstinBewegung(); 
-	}
-	
 	public int GetBodenRampenAdresse(){
 		return BodenRampenAdresse; 
 	}
@@ -48,6 +44,7 @@ public class BodenRampe {
 
 	public void BodenRampeausschalten(){
 		System.out.println("BodenRampe: Die BodenRampe wird ausgeschaltet.");
+		bodenRampenMotor.Motorausschalten(bodenRampenMotorAdresse);
 		BodenRampeZustand.stoppen(); 
 	}
 	
@@ -60,11 +57,17 @@ public class BodenRampe {
 		}		
 		if(Status == 2){
 			bodenRampenMotor.Motortieffahrenlassen(bodenRampenMotorAdresse); 
-			
-			BodenRampeZustand.stoppen(); 
-		}
-		BodenRampeZustand.gerade(); 
-		
+			if(Tasterunten.WartenAufTaster()){
+				System.out.println("BodenRampe: Die BodenRampe ist unten angekommen. ");
+				bodenRampenMotor.Motorausschalten(bodenRampenMotorAdresse); 
+				BodenRampeZustand.stoppen(); 
+			}
+			else{
+				System.out.println("BodenRampe: Fehler - Der Tasterunten wird nicht ausgelšst. ");
+				bodenRampenMotor.Motorausschalten(bodenRampenMotorAdresse); 
+				BodenRampeZustand.stoppen(); 
+			}
+		} 
 	}
 	
 	public void BodenRampeSchraegStellen(){
@@ -76,10 +79,17 @@ public class BodenRampe {
 		}	
 		if(Status == 1){
 			bodenRampenMotor.Motorhochfahrenlassen(bodenRampenMotorAdresse); 
-			
-			BodenRampeZustand.stoppen(); 
+			if(Tasteroben.WartenAufTaster()){
+				System.out.println("BodenRampe: Die BodenRampe ist oben angekommen. ");
+				bodenRampenMotor.Motorausschalten(bodenRampenMotorAdresse); 
+				BodenRampeZustand.stoppen();
+			}
+			else{
+				System.out.println("BodenRampe: Fehler - Der Tasteroben wird nicht ausgelšst. ");
+				bodenRampenMotor.Motorausschalten(bodenRampenMotorAdresse); 
+				BodenRampeZustand.stoppen(); 
+			}
 		}
-		BodenRampeZustand.schraeg(); 
 	}
 	
 	

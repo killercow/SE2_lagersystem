@@ -26,7 +26,13 @@ public class Taster {
 	}
 	
 	public boolean WartenAufTaster(){
-		tasterZustand.inaktiv(); 
+		try {
+			Thread.sleep(3000);
+			return true; 
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+			return false; 
+		}
 	}
 	
 	public void Tasteraktivieren(){
