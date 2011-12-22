@@ -33,8 +33,8 @@ public class Display extends JPanel{
 	
 	TextField1 F1 = new TextField1();
 	
-	public JTextField CodeField= new JTextField();
-	public JTextField ZeitField= new JTextField();
-	public JTextField PreisField= new JTextField(); 
-	public JTextField StatusField= new JTextField();   
+	public static JTextField CodeField= new JTextField();
+	public static JTextField ZeitField= new JTextField();
+	public static JTextField PreisField= new JTextField(); 
+	public static JTextField StatusField= new JTextField();   
 }

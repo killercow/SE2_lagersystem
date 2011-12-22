@@ -1,31 +1,32 @@
 package LagerSysPrg;
 
-/**
- * @author Selcuk Dogan
- * @version 1.0
- * @created 01-Jun-2011 15:44:59
- */
 public class ZustandTuer {
+	
+	public IKlappentuerZustand aktuellerZustand; 
+	private int Status; 
 
 	public ZustandTuer(){
-
+		setzeAktuellenZustand(new geschlossen(this)); 
+	}
+	
+	public void setzeAktuellenZustand(IKlappentuerZustand aktuellerKTZustand){
+		aktuellerZustand = aktuellerKTZustand; 
 	}
 
-	/**
-	 * 
-	 * @exception Throwable
-	 */
-	public void finalize()
-	  throws Throwable{
-
+	public void oeffnen() {
+		aktuellerZustand.oeffnen(); 
 	}
 
-	public void Oeffnen(){
-
+	public void schliessen() {
+		aktuellerZustand.schliessen(); 
 	}
 
-	public void schliessen(){
+	public int getStatus() {
+		return Status;
+	}
 
+	public void setStatus(int status) {
+		Status = status;
 	}
 
 }
