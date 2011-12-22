@@ -3,9 +3,9 @@ package LagerSysPrg;
 import Simulation.*; 
 
 public class Stapler {
-	public Lagerplatz[] Lagerplatzarray;
+	public Lagerplatz Lagerplatz; 
 	public Laufband laufband;
-	public int LaufbandMotorAdresse; 
+	public int LaufbandMotorAdresse;
 	
 	private Motor motorXRichtung;
 	private static int motorXRichtungAdresse; 
@@ -21,8 +21,9 @@ public class Stapler {
 	private boolean MotorfaehrtinXRichtungrueckwarts = false; 
 	private boolean MotorfaehrtinYRichtunghoch = false;
 	private int MotorStatus; 
+	private Packet paket; 
 	
-	public Stapler(){
+	public Stapler(Packet Paket){
 		this.StaplerAdresse = ErstelleStaplerAdresse();
 		motorXRichtung = new Motor(); 
 		motorXRichtungAdresse = motorXRichtung.GetMotorAdresse();
@@ -31,7 +32,9 @@ public class Stapler {
 		motorXRichtungSimulation = new Simulation.Motor();
 		motorYRichtungSimulation = new Simulation.Motor();
 		laufband = new Laufband();
-		LaufbandMotorAdresse = laufband.Motor_AdresseLaufband; 
+		LaufbandMotorAdresse = laufband.Motor_AdresseLaufband;
+		paket = Paket; 
+		Lagerplatz = new Lagerplatz(paket);
 		
 		StaplerfaehrtzurAusgabezurueck(); 
 		
@@ -169,10 +172,6 @@ public class Stapler {
 				}
 			}			
 		}
-	}
-
-	public boolean Paketplatzbelegt(){
-		return false;
 	}
 
 }

@@ -4,7 +4,7 @@ public class Lichtsensor {
 
 	private static int LichtsensorAdresse;
 	private int LichtsensorAdresseDefault = 0; 
-	public boolean isteingeschlatet = false; 
+	public boolean isteingeschaltet = false; 
 
 	public Lichtsensor(){
 		this.LichtsensorAdresse = ErstelleAdresse(); 
@@ -17,7 +17,7 @@ public class Lichtsensor {
 	}
 
 	public boolean einschalten(){
-		return isteingeschlatet = true; 
+		return isteingeschaltet = true; 
 	}
 	
 	public boolean ausschalten(){

@@ -7,9 +7,10 @@ import Simulation.*;
 
 public class FassadeDisplay {
 
+	private Packet Paket = new Packet(); 
 	private KlappenTuer Klappentuer = new KlappenTuer(); 
 	private EinAusgPlatz EAPlatz = new EinAusgPlatz();
-	private Stapler Stapler = new Stapler(); 
+	private Stapler Stapler = new Stapler(Paket); 
 	
 	public FassadeDisplay(){
 		
@@ -46,7 +47,7 @@ public class FassadeDisplay {
 	}
 
 	public void einlagern(){
-		private boolean Klappentueristoffen = false; 
+		boolean Klappentueristoffen = false; 
 		
 		Display.StatusField.setText("Bitte legen Sie Packet ein");
 		Display.CodeField.setText("code berechnen");
