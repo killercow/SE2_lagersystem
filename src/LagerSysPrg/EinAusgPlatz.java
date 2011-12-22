@@ -18,9 +18,8 @@ public class EinAusgPlatz {
 		
 		// Gewichtssensor
 		// Lichtsensorleiste
-		// BodenRampe
 		bodenRampe = new BodenRampe();
-		BodenRampeMotorAdresse = bodenRampe.MotorAdresse; 
+		BodenRampeMotorAdresse = bodenRampe.GetBodenRampenAdresse(); 
 		// TuerKlappe
 	}
 	
