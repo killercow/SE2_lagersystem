@@ -1,11 +1,6 @@
-/**
- * @author Tanveer Ahmed s680338
- * @version 1.0
- * @created 01-Jun-2011 15:44:59
- */
 package LagerSysPrg;
 
-import Simulation.simLagplatz;
+import Simulation.*;
 
 public class Init {
 	public  Stapler S1;
@@ -14,11 +9,11 @@ public class Init {
 	public  Lagerplatz LP3 ;
 	
 	public EinAusgPlatz EAPlatz;
-	public KlappenTür KT;
+	public KlappenTuer KT;
 	
 	public Init(String S){
 		System.out.println("Starte Init als "+ S);
-		S1 =new Stapler("Stapler","Stapler_Mx","Stapler_My","Laufband", "Laufband_M");
+		S1 =new Stapler();
 		
 		// nur zum probieren 
 		LP1 = new Lagerplatz("taster1", "Taster2","LP1",5000,9000); 

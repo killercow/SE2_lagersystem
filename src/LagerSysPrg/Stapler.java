@@ -1,5 +1,6 @@
 
 package LagerSysPrg;
+import Simulation.*; 
 
 public class Stapler {
 	public Lagerplatz[] Lagerplatzarray;
@@ -27,8 +28,8 @@ public class Stapler {
 		motorXRichtungAdresse = motorXRichtung.GetMotorAdresse();
 		motorYRichtung = new Motor(); 
 		motorYRichtungAdresse = motorYRichtung.GetMotorAdresse(); 
-		motorXRichtungSimulation = new Simulation.Motor(motorXRichtungAdresse);
-		motorYRichtungSimulation = new Simulation.Motor(motorYRichtungAdresse);
+		motorXRichtungSimulation = new Simulation.Motor();
+		motorYRichtungSimulation = new Simulation.Motor();
 		laufband = new Laufband();
 		LaufbandMotorAdresse = laufband.Motor_AdresseLaufband; 
 		

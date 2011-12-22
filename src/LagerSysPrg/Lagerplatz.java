@@ -1,12 +1,7 @@
 package LagerSysPrg;
 
-import Simulation.Taster;
+import Simulation.*;
 
-/**
- * @author Tanveer Ahmed s680338
- * @version 1.0
- * @created 01-Jun-2011 15:44:59
- */
 public class Lagerplatz {
 
 	private boolean belegt;
@@ -36,8 +31,8 @@ public class Lagerplatz {
 		
 		this.name=N;
 		System.out.println("Sim: Lagerplatz "+name+" erstellt");
-		s_Taster_a = new Simulation.Taster(t1,Z1); // Der Taster wird nach 5 Sec gedrückt
-		s_Taster_b = new Simulation.Taster(t2,Z2);
+		s_Taster_a = new Simulation.Taster(); // Der Taster wird nach 5 Sec gedrückt
+		s_Taster_b = new Simulation.Taster();
 	}
 
 	public boolean Setbelegt(){

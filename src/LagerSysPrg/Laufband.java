@@ -1,4 +1,5 @@
 package LagerSysPrg;
+import Simulation.*; 
 
 public class Laufband {
 
@@ -15,7 +16,7 @@ public class Laufband {
 		System.out.println("Sim: Laufband "+LaufbandAdresse+" erstellt");
 		LaufbandMotor = new Motor();
 		Motor_AdresseLaufband = Motor.GetMotorAdresse(); 
-		LaufbandMotor_Simulation = new Simulation.Motor(Motor_AdresseLaufband);
+		LaufbandMotor_Simulation = new Simulation.Motor();
 	}
 	
 	private int ErstelleLaufbandAdresse(){

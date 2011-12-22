@@ -1,12 +1,6 @@
 package LagerSysPrg;
 import Simulation.*;
 
-
-/**
- * @author Selcuk Dogan
- * @version 1.0
- * @created 01-Jun-2011 15:44:58
- */
 public class BodenRampe {
 	
 	String Adresse;
@@ -19,7 +13,7 @@ public class BodenRampe {
 	public BodenRampe(String BR_Add,String BRM_Add, String BRTO_Add, String BRTU_Add){
 		this.Adresse=BR_Add;
 		System.out.println("Sim: Bodenrampe "+BR_Add+" ertsellen");
-		br_Motor = new Simulation.Motor(BRM_Add);
+		br_Motor = new Simulation.Motor();
 		//br_Taster_O = new Simulation.Taster(BRTO_Add,5000);
 		//br_Taster_U = new Simulation.Taster(BRTU_Add,5000);
 	}

@@ -1,10 +1,6 @@
-package LagerSysPrg;
+package Simulation;
+import Fassade.*; 
 
-/**
- * @author Tanveer Ahmed s680338
- * @version 1.0
- * @created 01-Jun-2011 15:44:59
- */
 public class Kasse {
 
 	private int AnzEinEur;

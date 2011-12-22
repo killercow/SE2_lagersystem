@@ -1,4 +1,4 @@
-package LagerSysPrg;
+package Simulation;
 
 public  class DrehtLinks implements IMotorZustand {
 

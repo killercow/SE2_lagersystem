@@ -1,17 +1,12 @@
 package LagerSysPrg;
+import Simulation.*; 
 
-
-/**
- * @author Selcuk Dogan
- * @version 1.0
- * @created 01-Jun-2011 15:44:59
- */
 public class KlappenTuer {
 
 	public Motor m_Motor;
 	public Taster m_Taster;
-	public ZustandTür m_Zustand;
-	public ZustandTür m_ZustandTür;
+	public ZustandTuer m_Zustand;
+	public ZustandTuer m_ZustandTuer;
 	public Taster Taster_auf;
 	public Taster Taster_zu;
 
@@ -19,10 +14,6 @@ public class KlappenTuer {
 
 	}
 
-	/**
-	 * 
-	 * @exception Throwable Throwable
-	 */
 	public void finalize()
 	  throws Throwable{
 
