@@ -21,7 +21,7 @@ public class Laufband {
 	
 	private int ErstelleLaufbandAdresse(){
 		int xteLaufbandAdresse = LaufbandAdresseDefault +1; 
-		System.out.println("Laufband mit der Adresse " + xteLaufbandAdresse + "erstellt.");
+		System.out.println("Laufband: Laufband mit der Adresse " + xteLaufbandAdresse + "erstellt.");
 		return xteLaufbandAdresse;
 	}
 
@@ -53,7 +53,7 @@ public class Laufband {
 				LaufbandMotor.Motorvorwaertsfahrenlassen(Motor_AdresseLaufband); 
 			}
 		}
-		System.out.println("Laufband läuft jetzt vorwärts"); 
+		System.out.println("Laufband: Laufband läuft jetzt vorwärts"); 
 		bewegungvor = true; 
 	}
 
@@ -67,7 +67,7 @@ public class Laufband {
 				LaufbandMotor.Motorrueckwaertsfahrenlassen(Motor_AdresseLaufband); 
 			}
 		}
-		System.out.println("Laufband läuft jetzt rückwärts"); 
+		System.out.println("Laufband: Laufband läuft jetzt rückwärts"); 
 		bewegungvor = false; 
 	}
 	

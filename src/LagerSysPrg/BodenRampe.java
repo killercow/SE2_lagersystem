@@ -32,34 +32,51 @@ public class BodenRampe {
 		return BodenRampeZustand.getStatus(); 
 	}
 	
+	public boolean GetIstInBewegung(){
+		return BodenRampeZustand.GetIstinBewegung(); 
+	}
+	
 	public int GetBodenRampenAdresse(){
 		return BodenRampenAdresse; 
 	}
 	
 	private int ErstelleAdresse() {
 		int xteBodenRampenAdresse = BodenRampenAdresseDefault +1; 
-		System.out.println("BodenRampe mit der Adresse " + xteBodenRampenAdresse + "erstellt.");
+		System.out.println("BodenRampe: BodenRampe mit der Adresse " + xteBodenRampenAdresse + "erstellt.");
 		return xteBodenRampenAdresse;
 	}
 
 	public void BodenRampeausschalten(){
-		System.out.println("Die BodenRampe wird ausgeschaltet.");
+		System.out.println("BodenRampe: Die BodenRampe wird ausgeschaltet.");
 		BodenRampeZustand.stoppen(); 
 	}
 	
 	public void BodenRampeGeradeStellen(){
-		System.out.println("Die BodenRampe soll nach unten fahren");
+		System.out.println("BodenRampe: Die BodenRampe soll nach unten fahren");
 		int Status = GetBodenRampenZustand(); 
+		if(Status == 1){
+			System.out.println("BodenRampe: Die BodenRampe ist bereits unten. ");
+			return; 
+		}		
 		if(Status == 2){
+			bodenRampenMotor.Motortieffahrenlassen(bodenRampenMotorAdresse); 
+			
 			BodenRampeZustand.stoppen(); 
 		}
 		BodenRampeZustand.gerade(); 
+		
 	}
 	
 	public void BodenRampeSchraegStellen(){
-		System.out.println("Die BodenRampe soll nach oben fahren");
+		System.out.println("BodenRampe: Die BodenRampe soll nach oben fahren");
 		int Status = GetBodenRampenZustand(); 
+		if(Status == 2){
+			System.out.println("BodenRampe: Die BodenRampe ist bereits oben. ");
+			return; 
+		}	
 		if(Status == 1){
+			bodenRampenMotor.Motorhochfahrenlassen(bodenRampenMotorAdresse); 
+			
 			BodenRampeZustand.stoppen(); 
 		}
 		BodenRampeZustand.schraeg(); 

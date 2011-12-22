@@ -39,7 +39,7 @@ public class Stapler {
 	
 	private int ErstelleStaplerAdresse(){
 		int xteStaplerAdresse = StaplerAdresseDefault +1; 
-		System.out.println("Stapler mit der Adresse " + xteStaplerAdresse + "erstellt.");
+		System.out.println("Stapler: Stapler mit der Adresse " + xteStaplerAdresse + "erstellt.");
 		return xteStaplerAdresse;
 	}
 	
@@ -84,14 +84,14 @@ public class Stapler {
 				laufband.LaufbandMotor.Motorvorwaertsfahrenlassen(LaufbandMotorAdresse); 
 			}
 		}
-		System.out.println("Paket liegt auf dem Laufband."); 
+		System.out.println("Stapler: Paket liegt auf dem Laufband."); 
 		laufband.LaufbandMotor.Motorausschalten(LaufbandMotorAdresse); 
 		StaplerfahertmitPaketzumLagerplatz(); 
 	}
 	
 	private void StaplerfahertmitPaketzumLagerplatz(){
 		StaplerRichtunguebergeben('r');
-		System.out.println("Stapler ist am Lagerplatz angekommen.");
+		System.out.println("Stapler: Stapler ist am Lagerplatz angekommen.");
 		motorXRichtung.Motorausschalten(motorXRichtungAdresse);
 		Paketablegen(); 		
 	}
@@ -99,7 +99,7 @@ public class Stapler {
 	private void Paketablegen(){
 		StaplerRichtunguebergeben('h');
 		laufband.LaufbandMotor.Motorvorwaertsfahrenlassen(LaufbandMotorAdresse); 
-		System.out.println("Paket liegt im Lagerplatz.");
+		System.out.println("Stapler: Paket liegt im Lagerplatz.");
 		laufband.LaufbandMotor.Motorausschalten(LaufbandMotorAdresse);
 		StaplerRichtunguebergeben('t');
 		StaplerfaehrtzurAusgabezurueck(); 
@@ -107,7 +107,7 @@ public class Stapler {
 	
 	private void StaplerfaehrtzurAusgabezurueck(){
 		StaplerRichtunguebergeben('v');
-		System.out.println("Stapler ist an der Ausgabe angekommen.");
+		System.out.println("Stapler: Stapler ist an der Ausgabe angekommen.");
 		motorXRichtung.Motorausschalten(motorXRichtungAdresse);
 	}
 	

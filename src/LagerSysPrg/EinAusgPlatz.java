@@ -38,12 +38,6 @@ public class EinAusgPlatz {
 
 	}
 
-	/**
-	 * 
-	 * @param tiefe
-	 * @param breite
-	 * @param hoehe    hoehe
-	 */
 	public void GetPacketGroesse(int tiefe, int breite, int hoehe){
 
 	}

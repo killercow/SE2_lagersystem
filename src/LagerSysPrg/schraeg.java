@@ -1,6 +1,6 @@
 package LagerSysPrg;
 
-public class schraeg extends ZustandRampe {
+public class schraeg implements IBodenRampeZustand {
 
 private ZustandRampe Zustand; 
 	

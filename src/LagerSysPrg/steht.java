@@ -2,27 +2,30 @@ package LagerSysPrg;
 
 public class steht implements IBodenRampeZustand {
 
-private ZustandRampe Zustand; 
+	private ZustandRampe Zustand; 
 	
 	public steht(ZustandRampe bodenrampezustand){
 		Zustand = bodenrampezustand;  
 	}
 
 	public void gerade() {
-		System.out.println("BodenRampe ist bereits gerade!"); 
+		System.out.println("ZustandRampe: BodenRampe wird nach unten gefahren!"); 
+		Zustand.setIstinBewegung(true);
 		Zustand.setzeAktuellenZustand(new gerade(Zustand));
-		Zustand.setStatus(1); 
-		
+		Zustand.setIstinBewegung(false); 
+		Zustand.setStatus(1); 		
 	}
 
 	public void schraeg() {
-		System.out.println("BodenRampe wird angehoben!"); 
-		Zustand.setzeAktuellenZustand(new schraeg(Zustand));
+		System.out.println("ZustandRampe: BodenRampe wird angehoben!"); 
+		Zustand.setIstinBewegung(true); 
+		Zustand.setzeAktuellenZustand(new schraeg(Zustand)); 
+		Zustand.setIstinBewegung(false); 
 		Zustand.setStatus(2); 
 		
 	}
 
 	public void stoppen() {
-		System.out.println("BodenRampe steht bereits!"); 		
+		System.out.println("ZustandRampe: BodenRampe steht bereits!"); 	
 	}
 }

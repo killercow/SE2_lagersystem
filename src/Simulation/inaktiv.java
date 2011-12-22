@@ -9,12 +9,12 @@ private TasterZustand Zustand;
 	}
 
 	public void aktiv() {
-		System.out.println("Taster wird aktiv gestellt!"); 
+		System.out.println("TasterZustand: TasterZustand: Taster wird aktiv gestellt!"); 
 		Zustand.setzeAktuellenZustand(new aktiv(Zustand)); 
 		Zustand.setStatus(1); 
 	}
 
 	public void inaktiv() {
-		System.out.println("Taster ist bereits inaktiv!"); 		
+		System.out.println("TasterZustand: TasterZustand: Taster ist bereits inaktiv!"); 		
 	}
 }

@@ -1,11 +1,10 @@
 package LagerSysPrg;
 
-import Simulation.IMotorZustand;
-
 public class ZustandRampe {
 
 	public IBodenRampeZustand aktuellerZustand; 
 	private int Status; 
+	private boolean istinBewegung = false; 
 	
 	public ZustandRampe(){
 		setzeAktuellenZustand(new gerade(this)); 
@@ -31,6 +30,14 @@ public class ZustandRampe {
 	}
 	public  void stoppen(){
 		aktuellerZustand.stoppen(); 
+	}
+
+	public boolean GetIstinBewegung() {
+		return istinBewegung;
+	}
+
+	public void setIstinBewegung(boolean istinBewegung) {
+		this.istinBewegung = istinBewegung;
 	}
 
 }

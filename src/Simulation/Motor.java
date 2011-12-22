@@ -20,12 +20,12 @@ public class Motor{
 	
 	private int ErstelleMotoradresse(){
 		int xteMotorAdresse = MotorAdresseDefault + 1;
-		System.out.println("Motor mit der Adresse " + xteMotorAdresse + "erstellt.");
+		System.out.println("Motor: Motor mit der Adresse " + xteMotorAdresse + "erstellt.");
 		return xteMotorAdresse; 
 	}
 	
 	public void Motorvorwaertsfahrenlassen(int MotorAdresse){
-		System.out.println("Der Motor mit der Adresse " + MotorAdresse + " soll vorwärts fahren.");
+		System.out.println("Motor: Der Motor mit der Adresse " + MotorAdresse + " soll vorwärts fahren.");
 		int Status = GetMotorStatus(); 
 		if(Status == 2){
 			MotorStatus.Stoppen(); 
@@ -34,7 +34,7 @@ public class Motor{
 	}
 	
 	public void Motorrueckwaertsfahrenlassen(int MotorAdresse){
-		System.out.println("Der Motor mit der Adresse " + MotorAdresse + " soll rückwärts fahren.");
+		System.out.println("Motor: Der Motor mit der Adresse " + MotorAdresse + " soll rückwärts fahren.");
 		int Status = GetMotorStatus(); 
 		if(Status == 1){
 			MotorStatus.Stoppen(); 
@@ -43,7 +43,7 @@ public class Motor{
 	}
 	
 	public void Motorhochfahrenlassen(int MotorAdresse){
-		System.out.println("Der Motor mit der Adresse " + MotorAdresse + " soll hoch fahren.");
+		System.out.println("Motor: Der Motor mit der Adresse " + MotorAdresse + " soll hoch fahren.");
 		int Status = GetMotorStatus(); 
 		if(Status == 2){
 			MotorStatus.Stoppen(); 
@@ -52,7 +52,7 @@ public class Motor{
 	}
 	
 	public void Motortieffahrenlassen(int MotorAdresse){
-		System.out.println("Der Motor mit der Adresse " + MotorAdresse + " soll tief fahren.");
+		System.out.println("Motor: Der Motor mit der Adresse " + MotorAdresse + " soll tief fahren.");
 		int Status = GetMotorStatus(); 
 		if(Status == 1){
 			MotorStatus.Stoppen(); 
@@ -61,7 +61,7 @@ public class Motor{
 	}
 
 	public void Motorausschalten(int MotorAdresse){
-		System.out.println("Der Motor mit der Adresse " + MotorAdresse + " wird ausgeschaltet.");
+		System.out.println("Motor: Der Motor mit der Adresse " + MotorAdresse + " wird ausgeschaltet.");
 		MotorStatus.Stoppen(); 
 	}
 

@@ -9,16 +9,16 @@ public  class DrehtLinks implements IMotorZustand {
 	}
 
 	public void rechts() {
-		System.out.println("Motor kann nicht rechts drehen"); 
+		System.out.println("DrehtLinks: Motor kann nicht rechts drehen"); 
 	}
 
 	public void links() {
-		System.out.println("Motor dreht bereits links!"); 
+		System.out.println("DrehtLinks: Motor dreht bereits links!"); 
 		
 	}
 
 	public void stoppen() {
-		System.out.println("Motor wird gestoppt!"); 
+		System.out.println("DrehtLinks: Motor wird gestoppt!"); 
 		Zustand.setzeAktuellenZustand(new Steht(Zustand)); 
 		Zustand.setStatus(0); 
 	}

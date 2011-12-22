@@ -9,11 +9,11 @@ public class aktiv implements ITasterZustand {
 	}
 
 	public void aktiv() {
-		System.out.println("Taster ist bereits aktiv!"); 
+		System.out.println("TasterZustand: Taster ist bereits aktiv!"); 
 	}
 
 	public void inaktiv() {
-		System.out.println("Taster wird inaktiv gestellt!"); 
+		System.out.println("TasterZustand: Taster wird inaktiv gestellt!"); 
 		Zustand.setzeAktuellenZustand(new aktiv(Zustand)); 
 		Zustand.setStatus(0); 
 		
