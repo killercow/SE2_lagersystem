@@ -9,11 +9,6 @@ public class Motor{
 	public Motor(){
 		this.MotorAdresse = ErstelleMotoradresse(); 
 	}
-
-	public void finalize()
-	  throws Throwable{
-
-	}
 	
 	public int GetMotorStatus(){
 		return MotorStatus.getStatus(); 

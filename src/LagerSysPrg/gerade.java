@@ -1,31 +1,26 @@
 package LagerSysPrg;
 
-/**
- * @author Selcuk Dogan
- * @version 1.0
- * @created 01-Jun-2011 15:44:58
- */
-public class gerade extends ZustandRampe {
+public class gerade implements IBodenRampeZustand {
 
-	public gerade(){
-
+	private ZustandRampe Zustand; 
+	
+	public gerade(ZustandRampe bodenRampenZustand){
+		Zustand = bodenRampenZustand;  
 	}
 
-	/**
-	 * 
-	 * @exception Throwable Throwable
-	 */
-	public void finalize()
-	  throws Throwable{
-
+	public void gerade() {
+		System.out.println("BodenRampe ist bereits gerade!"); 
 	}
 
-	public void heben(){
-
+	public void schraeg() {
+		System.out.println("BodenRampe kann nicht nach oben bewegt werden!"); 
+		
 	}
 
-	public void senken(){
-
+	public void stoppen() {
+		System.out.println("BodenRampe wird gestoppt"); 
+		Zustand.setzeAktuellenZustand(new steht(Zustand)); 
+		Zustand.setStatus(0); 
 	}
 
 }

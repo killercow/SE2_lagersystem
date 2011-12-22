@@ -1,31 +1,26 @@
 package LagerSysPrg;
 
-/**
- * @author Selcuk Dogan
- * @version 1.0
- * @created 01-Jun-2011 15:44:59
- */
 public class schraeg extends ZustandRampe {
 
-	public schraeg(){
-
+private ZustandRampe Zustand; 
+	
+	public schraeg(ZustandRampe bodenRampenZustand){
+		Zustand = bodenRampenZustand;  
 	}
 
-	/**
-	 * 
-	 * @exception Throwable Throwable
-	 */
-	public void finalize()
-	  throws Throwable{
-
+	public void gerade() {
+		System.out.println("BodenRampe kann nicht nach unten bewegt werden!"); 
 	}
 
-	public void heben(){
-
+	public void schraeg() {
+		System.out.println("BodenRampe ist bereits oben!"); 
+		
 	}
 
-	public void senken(){
-
+	public void stoppen() {
+		System.out.println("BodenRampe wird gestoppt"); 
+		Zustand.setzeAktuellenZustand(new steht(Zustand)); 
+		Zustand.setStatus(0); 
 	}
 
 }

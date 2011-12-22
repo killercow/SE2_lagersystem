@@ -20,7 +20,7 @@ public class Init {
 		LP2 = new Lagerplatz("taster3", "Taster4","LP2",10000,14000); 
 		LP3 = new Lagerplatz("taster5", "Taster6","LP3",15000,19000); 
 		
-		EAPlatz = new EinAusgPlatz("EAPlatz","EABodenrampe", "EABR_Motor","EABR_TO","EABR_TU");
+		EAPlatz = new EinAusgPlatz();
 		// Tür noch nicht erstellt
 	}
 }

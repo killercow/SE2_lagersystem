@@ -1,45 +1,40 @@
 package LagerSysPrg;
+import Simulation.*; 
 
 public class EinAusgPlatz {
 
-	private boolean Belegt;
-	public BodenRampe m_BodenRampe;
-	public KlappenTuer m_KlappenTuer;
-//	public LichtsensorLeiste[3] m_Lichtsensor;
-	public LichtsensorLeiste m_LichtsensorLeiste;
-
-	String address;
+	private boolean istBelegt;
+	public BodenRampe bodenRampe;
+	public int BodenRampeMotorAdresse; 
+	public KlappenTuer klappenTuer;
+	public LichtsensorLeiste lichtsensorLeiste;
+	public Gewichtsensor gewichtsensor; 
+	private int EAPlatzAdresseDefault = 0; 
+	public static int einausgabePlatzAdresse;
 	
-	public EinAusgPlatz(String EAPAdd, String BR_Add,String BRM_Add,String BRTO_Add, String BRTU_Add){
-		this.address=EAPAdd;
-		System.out.println("Sim: "+EAPAdd+" erstellt");
+	public EinAusgPlatz(){
+		this.einausgabePlatzAdresse=ErstelleEinAusgabePlatzAdresse();
+		System.out.println("Sim: "+einausgabePlatzAdresse+" erstellt");
 		
 		// Gewichtssensor
 		// Lichtsensorleiste
 		// BodenRampe
-		m_BodenRampe = new BodenRampe(BR_Add,BRM_Add, BRTO_Add, BRTU_Add);
-		// TürKlappe
+		bodenRampe = new BodenRampe();
+		BodenRampeMotorAdresse = bodenRampe.MotorAdresse; 
+		// TuerKlappe
 	}
-
-	public EinAusgPlatz(){
-		
-		// Gewichtssensor
-		// BodenRampe
-
-	}
-	/**
-	 * 
-	 * @exception Throwable Throwable
-	 */
+	
+	private int ErstelleEinAusgabePlatzAdresse(){
+		int xteEAPLatzAdresse = EAPlatzAdresseDefault +1; 
+		System.out.println("EAPlatz mit der Adresse " + xteEAPLatzAdresse + "erstellt.");
+		return xteEAPLatzAdresse;
+	} 
+	
 	public void finalize()
 	  throws Throwable{
 
 	}
-
-	/**
-	 * 
-	 * @param gewicht    gewicht
-	 */
+	
 	public void GetGewicht(float gewicht){
 
 	}
