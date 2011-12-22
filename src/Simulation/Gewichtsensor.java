@@ -1,4 +1,5 @@
 package Simulation;
+import java.util.*;
 
 public class Gewichtsensor {
 
@@ -15,8 +16,9 @@ public class Gewichtsensor {
 		return xteGewichtsensorAdresse;
 	}
 
-	public void MesseGewicht(){
-		
+	public int MesseGewicht(){
+		Random generator = new Random(); 
+		return generator.nextInt(); 
 	}
 
 }

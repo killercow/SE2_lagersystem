@@ -68,13 +68,8 @@ public class Stapler {
 		}
 	}
 	
-	public void finalize()
-	  throws Throwable{
 
-	}
-
-
-	private void Paketaufnehmen(){
+	public void Paketaufnehmen(){
 		if(laufband.LaufbandMotor.GetMotorStatus() == 0){
 			laufband.LaufbandMotor.Motorvorwaertsfahrenlassen(LaufbandMotorAdresse); 
 		}

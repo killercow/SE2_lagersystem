@@ -13,7 +13,7 @@ public class geschlossen implements IKlappentuerZustand{
 		Zustand.setStatus(1); 
 	}
 
-	public void schlie§en() {
+	public void schliessen() {
 		System.out.println("ZustandTŸr: Die KlappentŸr ist bereits geschlossen!"); 
 	}
 	

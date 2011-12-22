@@ -1,4 +1,6 @@
 package LagerSysPrg;
+import java.text.SimpleDateFormat;
+
 import Simulation.*; 
 
 public class EinAusgPlatz {
@@ -11,16 +13,17 @@ public class EinAusgPlatz {
 	public Gewichtsensor gewichtsensor; 
 	private int EAPlatzAdresseDefault = 0; 
 	public static int einausgabePlatzAdresse;
+	private Packet paket; 
 	
 	public EinAusgPlatz(){
 		this.einausgabePlatzAdresse=ErstelleEinAusgabePlatzAdresse();
 		System.out.println("Sim: "+einausgabePlatzAdresse+" erstellt");
-		
-		// Gewichtssensor
-		// Lichtsensorleiste
+		paket = new Packet(); 
 		bodenRampe = new BodenRampe();
 		BodenRampeMotorAdresse = bodenRampe.GetBodenRampenAdresse(); 
-		// TuerKlappe
+		klappenTuer = new KlappenTuer(); 
+		lichtsensorLeiste = new LichtsensorLeiste(); 
+		gewichtsensor = new Gewichtsensor(); 
 	}
 	
 	private int ErstelleEinAusgabePlatzAdresse(){
@@ -29,17 +32,47 @@ public class EinAusgPlatz {
 		return xteEAPLatzAdresse;
 	} 
 	
-	public void finalize()
-	  throws Throwable{
-
+	public boolean Paketannehmen(){
+		if(klappenTuer.oeffnen()){
+			System.out.println("EAPLatz: Die Klappentür wurde geöffnet.");
+			//auf Button von der Gui warten
+			System.out.println("EAPLatz: Der Button in der Gui wurde gedrückt.");
+			if(klappenTuer.schliessen()){
+				System.out.println("EAPLatz: Die Klappentür wurde geschlossen.");
+				SimpleDateFormat time = new SimpleDateFormat("HH:mm");
+				paket.setEinLagZeit(time); 
+				int Paketgewicht = gewichtsensor.MesseGewicht(); 
+				paket.setGewicht(Paketgewicht); 
+				System.out.println("EAPLatz: Das Paket hat ein Gewicht von: "+ Paketgewicht);
+				lichtsensorLeiste.MesseGroesse(); 
+				int XPosition = lichtsensorLeiste.GetXPosition(); 
+				int YPosition = lichtsensorLeiste.GetYPosition(); 
+				int ZPosition = lichtsensorLeiste.GetZPosition(); 
+				int Groesse = (XPosition + YPosition + ZPosition) / 3; 
+				paket.setGroesse(Groesse); 
+				return true; 
+			}
+			else{
+				return false; 
+			}
+		}
+		else{
+			System.out.println("EAPLatz: Fehler - Die Klappentür kann nicht geöffnet werden.");
+			return false; 
+		}
 	}
 	
-	public void GetGewicht(float gewicht){
-
+	public void PaketaufBRzumStaplerfahren(){
+		bodenRampe.BodenRampeSchraegStellen(); 
+		System.out.println("EAPLatz: Die Bodenrampe wurde aktiviert und fährt hoch zum Stapler.");
+		
+	}
+	
+	public void EAPLatzinAusgangsstellungBringen(){
+		bodenRampe.BodenRampeGeradeStellen(); 
+		bodenRampe.BodenRampeausschalten(); 
+		System.out.println("EAPLatz: Die Bodenrampe wurde deaktiviert und der EAPlatz ist in Wartestellung.");
 	}
 
-	public void GetPacketGroesse(int tiefe, int breite, int hoehe){
-
-	}
 
 }

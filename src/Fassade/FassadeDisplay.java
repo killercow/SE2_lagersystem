@@ -7,7 +7,9 @@ import Simulation.*;
 
 public class FassadeDisplay {
 
-	private KlappenTuer Klappentuer = new Klappentuer(); 
+	private KlappenTuer Klappentuer = new KlappenTuer(); 
+	private EinAusgPlatz EAPlatz = new EinAusgPlatz();
+	private Stapler Stapler = new Stapler(); 
 	
 	public FassadeDisplay(){
 		
@@ -45,6 +47,7 @@ public class FassadeDisplay {
 
 	public void einlagern(){
 		private boolean Klappentueristoffen = false; 
+		
 		Display.StatusField.setText("Bitte legen Sie Packet ein");
 		Display.CodeField.setText("code berechnen");
 	  	  
@@ -60,11 +63,15 @@ public class FassadeDisplay {
 	  	Klappentueristoffen = Klappentuer.oeffnen(); 
 	  	if(Klappentueristoffen){
 	  		System.out.println( "Einlagern: Packet eingelegt");
+	  		if(EAPlatz.Paketannehmen()){
+	  			System.out.println( "Einlagern: Klappe schliessen");
+	  			Klappentuer.schliessen(); 
+	  			Stapler.Paketaufnehmen(); 
+	  			EAPlatz.PaketaufBRzumStaplerfahren(); 
+	  			EAPlatz.EAPLatzinAusgangsstellungBringen(); 
+	  		}
+	  		
 	  	}
-	  	System.out.println( "Einlagern: Klappe schliessen");
-	  	System.out.println( "Einlagern: Packetgroesse ermitteln");
-	  	System.out.println( "Einlagern: Gewicht ermitteln");
-	  	System.out.println( "Einlagern: starte Gabel");
 	  	System.out.println( "Einlagern: Beleg drucken");
 	  	System.out.println( "Einlagern: einlagern beendet");
 	  	

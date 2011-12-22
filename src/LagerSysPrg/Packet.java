@@ -1,47 +1,68 @@
 package LagerSysPrg;
 
-/**
- * @author Tanveer Ahmed s680338
- * @version 1.0
- * @created 01-Jun-2011 15:44:59
- */
+import java.text.SimpleDateFormat;
+import java.util.*;
+
 public class Packet {
 
-	private int AusLagZeit;
-	private int EinLagZeit;
+	private SimpleDateFormat AusLagZeit = new SimpleDateFormat("HH:mm");
+	private SimpleDateFormat EinLagZeit = new SimpleDateFormat("HH:mm");
 	private float Gewicht;
 	private int Groesse;
-	private int GroessePreis;
 	private int PaketCode;
 
 	public Packet(){
-
+		this.PaketCode = ErstellePaketCode(); 
+		System.out.println("Paket: Der PaketCode lautet" + PaketCode); 
 	}
 
-	/**
-	 * 
-	 * @exception Throwable Throwable
-	 */
-	public void finalize()
-	  throws Throwable{
 
+	private int ErstellePaketCode() {
+		Random generator = new Random(); 
+		return generator.nextInt();
+	}
+	
+	public int GetPaketCode(){
+		return PaketCode; 
 	}
 
-	public void auslagern(){
-
+	public float getGewicht() {
+		return Gewicht;
 	}
 
-	public void einlagern(){
 
+	public void setGewicht(float gewicht) {
+		Gewicht = gewicht;
 	}
 
-	public void getPreis(){
 
+	public int getGroesse() {
+		return Groesse;
 	}
 
-	public void setCode(){
 
+	public void setGroesse(int groesse) {
+		Groesse = groesse;
 	}
 
+
+	public SimpleDateFormat getAusLagZeit() {
+		return AusLagZeit;
+	}
+
+
+	public void setAusLagZeit(SimpleDateFormat ausLagZeit) {
+		AusLagZeit = ausLagZeit;
+	}
+
+
+	public SimpleDateFormat getEinLagZeit() {
+		return EinLagZeit;
+	}
+
+
+	public void setEinLagZeit(SimpleDateFormat einLagZeit) {
+		EinLagZeit = einLagZeit;
+	}
 
 }
