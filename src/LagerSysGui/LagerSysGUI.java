@@ -1,4 +1,5 @@
 package LagerSysGui;
+import Fassade.*; 
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -39,10 +40,13 @@ public class LagerSysGUI{
 	private JButton einlagern = null;
 	private JButton auslagern = null;
 	boolean freigabe = false;
+	private FassadeDisplay Fassade; 
+	
 	public LagerSysGUI() {
 		//getLagerSysFrame();
 		super();
 		initialize();
+		Fassade = new FassadeDisplay(); 
 		
 	}
 
@@ -144,12 +148,15 @@ public class LagerSysGUI{
 	private void eingabe(String comand)
     {
 		if(comand=="Abholen"){
+			System.out.println("Abholen wurde gedrückt!"); 
 			StatusField.setText(comand);
 			einlagern.setEnabled(false);
 			CodeField.setText("");
 			freigabe = true;
+			Fassade.auslagern(); 
 		}
 		else if(comand=="Einlagern"){
+			System.out.println("Einlagern wurde gedrückt!"); 
 			StatusField.setText(comand);
 			auslagern.setEnabled(false);
 			
@@ -160,9 +167,10 @@ public class LagerSysGUI{
 		     	// Formatierung zu String:
 		  	System.out.println( "Einlagern: Date = " + df.format( dt ) );        // z.B. '2001-01-26 19:03:56.731'
 		  	ZeitField.setText(time.format(dt));
-			
+			Fassade.einlagern(); 
 		}
 		else if(comand=="Abbruch"){
+			System.out.println("Abbruch wurde gedrückt!");
 			getCodeField().setText("");
 			auslagern.setEnabled(true);
 			einlagern.setEnabled(true);

@@ -40,15 +40,17 @@ public class CommandAction implements ActionListener
       public void pruefeCommand()
       {
          if (lastCommand.equals("C") && freigabe){
+        	 System.out.println("CommandAction; C wurde gedrückt");
         	 Display.StatusField.setText("Eingabe Abgebrochen");
         	 Display.CodeField.setText("");
          }
          else if (lastCommand.equals("B")&& freigabe) {
+        	 System.out.println("B wurde gedrückt");
         
       		PaketCode = 222; // Test Codes
       		
       		if (Integer.parseInt(Display.CodeField.getText())==PaketCode){
-      			System.out.println( "Auslagern: Code Akzeptiert");
+      			System.out.println( "CommanAction: Auslagern: Code Akzeptiert");
       			Display.StatusField.setText("Eingabe Bestaetigt");
            	  	
       			CodeOK=true;
@@ -59,17 +61,15 @@ public class CommandAction implements ActionListener
         		CodeOK=false;
         		freigabe=false;
         		InsertAction.freigabe=false;
-        }
-
-        	 
-        	 
-        	 //Display.StatusField.setText("Eingabe Bestaetigt");
+        	}
          }
-         if (lastCommand.equals("Abholen")){
-        	 Fassade.auslagern();
+         else if (lastCommand.equals("Abholen")){
+        	 System.out.println("CommandAction: Auslagern wurde gedrückt"); 
+        	 //Fassade.auslagern();
          }
-         if (lastCommand.equals("Einlagern")){
-        	 Fassade.einlagern();
+         else if (lastCommand.equals("Einlagern")){
+        	 System.out.println("CommandAction: Einlagern wurde gedrückt"); 
+        	 //Fassade.einlagern();
          }
          
       }

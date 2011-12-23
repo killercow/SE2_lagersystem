@@ -14,7 +14,7 @@ public class Packet {
 
 	public Packet(){
 		this.PaketCode = ErstellePaketCode(); 
-		System.out.println("Paket: Der PaketCode lautet" + PaketCode); 
+		System.out.println("Paket: Der PaketCode lautet: " + PaketCode); 
 	}
 
 

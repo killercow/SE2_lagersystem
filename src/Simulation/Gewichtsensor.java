@@ -11,8 +11,9 @@ public class Gewichtsensor {
 	}
 
 	private int ErstelleAdresse() {
-		int xteGewichtsensorAdresse = GewichtsensorAdresseDefault +1; 
-		System.out.println("Gewichtsensor mit der Adresse " + xteGewichtsensorAdresse + "erstellt.");
+		Random generator = new Random();
+		int xteGewichtsensorAdresse = GewichtsensorAdresseDefault + generator.nextInt(); 
+		System.out.println("Gewichtsensor mit der Adresse " + xteGewichtsensorAdresse + " erstellt.");
 		return xteGewichtsensorAdresse;
 	}
 

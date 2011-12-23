@@ -1,6 +1,7 @@
 
 package LagerSysPrg;
 import Simulation.*; 
+import java.util.*; 
 
 public class Stapler {
 	public Lagerplatz Lagerplatz; 
@@ -29,9 +30,7 @@ public class Stapler {
 		motorXRichtung = new Motor(); 
 		motorXRichtungAdresse = motorXRichtung.GetMotorAdresse();
 		motorYRichtung = new Motor(); 
-		motorYRichtungAdresse = motorYRichtung.GetMotorAdresse(); 
-		motorXRichtungSimulation = new Simulation.Motor();
-		motorYRichtungSimulation = new Simulation.Motor();
+		motorYRichtungAdresse = motorYRichtung.GetMotorAdresse();
 		laufband = new Laufband();
 		LaufbandMotorAdresse = laufband.Motor_AdresseLaufband;
 		paket = Paket;  
@@ -42,8 +41,9 @@ public class Stapler {
 	}
 	
 	private int ErstelleStaplerAdresse(){
-		int xteStaplerAdresse = StaplerAdresseDefault +1; 
-		System.out.println("Stapler: Stapler mit der Adresse " + xteStaplerAdresse + "erstellt.");
+		Random generator = new Random(); 
+		int xteStaplerAdresse = StaplerAdresseDefault + generator.nextInt(); 
+		System.out.println("Stapler: Stapler mit der Adresse " + xteStaplerAdresse + " erstellt.");
 		return xteStaplerAdresse;
 	}
 	

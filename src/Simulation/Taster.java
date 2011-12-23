@@ -1,4 +1,6 @@
 package Simulation;
+import java.util.*; 
+
 
 public class Taster {
 
@@ -12,8 +14,9 @@ public class Taster {
 	}
 
 	private int ErstelleAdresse() {
-		int xteTasterAdresse = TasterAdresseDefault +1; 
-		System.out.println("Taster mit der Adresse " + xteTasterAdresse + "erstellt.");
+		Random generator = new Random(); 
+		int xteTasterAdresse = TasterAdresseDefault + generator.nextInt(); 
+		System.out.println("Taster: Taster mit der Adresse " + xteTasterAdresse + " erstellt.");
 		return xteTasterAdresse;
 	}
 	

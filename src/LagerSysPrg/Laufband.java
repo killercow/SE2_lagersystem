@@ -1,5 +1,6 @@
 package LagerSysPrg;
 import Simulation.*; 
+import java.util.*;
 
 public class Laufband {
 
@@ -13,21 +14,15 @@ public class Laufband {
 
 	public Laufband(){
 		this.LaufbandAdresse = ErstelleLaufbandAdresse(); 
-		System.out.println("Sim: Laufband "+LaufbandAdresse+" erstellt");
 		LaufbandMotor = new Motor();
 		Motor_AdresseLaufband = Motor.GetMotorAdresse(); 
-		LaufbandMotor_Simulation = new Simulation.Motor();
 	}
 	
 	private int ErstelleLaufbandAdresse(){
-		int xteLaufbandAdresse = LaufbandAdresseDefault +1; 
-		System.out.println("Laufband: Laufband mit der Adresse " + xteLaufbandAdresse + "erstellt.");
+		Random generator = new Random(); 
+		int xteLaufbandAdresse = LaufbandAdresseDefault + generator.nextInt(); 
+		System.out.println("Laufband: Laufband mit der Adresse " + xteLaufbandAdresse + " erstellt.");
 		return xteLaufbandAdresse;
-	}
-
-	public void finalize()
-	  throws Throwable{
-
 	}
 	
 	public boolean StehtderMotor(){

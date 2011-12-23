@@ -12,6 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Display extends JPanel{
+	
 	public Display(){
 		setLayout(new BorderLayout());  // Layout-Manager festlegen
 	      // Angabe der Anzahl von Spalten und Zeilen im Konstruktor

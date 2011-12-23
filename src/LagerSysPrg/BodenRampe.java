@@ -1,5 +1,6 @@
 package LagerSysPrg;
 import Simulation.*;
+import java.util.*; 
 
 public class BodenRampe {
 	
@@ -16,8 +17,7 @@ public class BodenRampe {
 	private ZustandRampe BodenRampeZustand = new ZustandRampe(); 
 
 	public BodenRampe(){
-		this.BodenRampenAdresse= ErstelleAdresse();
-		System.out.println("Sim: Bodenrampe "+ BodenRampenAdresse +" ertsellen");
+		this.BodenRampenAdresse= ErstelleAdresse(); 
 		bodenRampenMotor = new Motor(); 
 		bodenRampenMotorAdresse = bodenRampenMotor.GetMotorAdresse(); 
 		bodenRampenMotor = new Simulation.Motor();
@@ -37,8 +37,9 @@ public class BodenRampe {
 	}
 	
 	private int ErstelleAdresse() {
-		int xteBodenRampenAdresse = BodenRampenAdresseDefault +1; 
-		System.out.println("BodenRampe: BodenRampe mit der Adresse " + xteBodenRampenAdresse + "erstellt.");
+		Random generator = new Random(); 
+		int xteBodenRampenAdresse = BodenRampenAdresseDefault + generator.nextInt(); 
+		System.out.println("BodenRampe: BodenRampe mit der Adresse " + xteBodenRampenAdresse + " erstellt.");
 		return xteBodenRampenAdresse;
 	}
 

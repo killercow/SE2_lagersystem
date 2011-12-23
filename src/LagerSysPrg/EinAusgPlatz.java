@@ -1,5 +1,6 @@
 package LagerSysPrg;
 import java.text.SimpleDateFormat;
+import java.util.*;
 
 import Simulation.*; 
 
@@ -20,7 +21,6 @@ public class EinAusgPlatz {
 	
 	public EinAusgPlatz(){
 		this.einausgabePlatzAdresse=ErstelleEinAusgabePlatzAdresse();
-		System.out.println("Sim: "+einausgabePlatzAdresse+" erstellt");
 		paket = new Packet(); 
 		Lagerplatz = new Lagerplatz(paket); 
 		Stapler = new Stapler(paket, Lagerplatz); 
@@ -32,8 +32,9 @@ public class EinAusgPlatz {
 	}
 	
 	private int ErstelleEinAusgabePlatzAdresse(){
-		int xteEAPLatzAdresse = EAPlatzAdresseDefault +1; 
-		System.out.println("EAPlatz mit der Adresse " + xteEAPLatzAdresse + "erstellt.");
+		Random generator = new Random(); 
+		int xteEAPLatzAdresse = EAPlatzAdresseDefault + generator.nextInt(); 
+		System.out.println("EAPlatz mit der Adresse " + xteEAPLatzAdresse + " erstellt.");
 		return xteEAPLatzAdresse;
 	} 
 	

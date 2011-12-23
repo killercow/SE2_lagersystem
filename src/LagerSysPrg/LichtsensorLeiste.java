@@ -15,8 +15,9 @@ public class LichtsensorLeiste {
 	}
 
 	private int ErstelleAdresse() {
-		int xteLichtsensorMatixAdresse = LichtsensorMatrixAdresseDefault +1; 
-		System.out.println("LichtsensorMatrix mit der Adresse " + xteLichtsensorMatixAdresse + "erstellt.");
+		Random generator = new Random();
+		int xteLichtsensorMatixAdresse = LichtsensorMatrixAdresseDefault +generator.nextInt(); 
+		System.out.println("LichtsensorMatrix mit der Adresse " + xteLichtsensorMatixAdresse + " erstellt.");
 		return xteLichtsensorMatixAdresse;
 	}
 

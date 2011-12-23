@@ -1,4 +1,5 @@
 package Simulation;
+import java.util.*;
 
 public class Lichtsensor {
 
@@ -11,8 +12,9 @@ public class Lichtsensor {
 	}
 
 	private int ErstelleAdresse() {
-		int xteLichtsensorAdresse = LichtsensorAdresseDefault +1; 
-		System.out.println("Lichtsensor mit der Adresse " + xteLichtsensorAdresse + "erstellt.");
+		Random generator = new Random(); 
+		int xteLichtsensorAdresse = LichtsensorAdresseDefault + generator.nextInt(); 
+		System.out.println("Lichtsensor mit der Adresse " + xteLichtsensorAdresse + " erstellt.");
 		return xteLichtsensorAdresse;
 	}
 

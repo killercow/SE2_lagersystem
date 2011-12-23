@@ -7,13 +7,16 @@ import Simulation.*;
 
 public class FassadeDisplay {
 
-	private Packet Paket = new Packet(); 
-	private KlappenTuer Klappentuer = new KlappenTuer(); 
-	private EinAusgPlatz EAPlatz = new EinAusgPlatz();
-	private CommandAction commandAction = new CommandAction(); 
+	private Packet Paket;  
+	private KlappenTuer Klappentuer;  
+	private EinAusgPlatz EAPlatz; 
+	private CommandAction commandAction; 
 	
 	public FassadeDisplay(){
-		
+		Paket = new Packet(); 
+		Klappentuer = new KlappenTuer();
+		EAPlatz = new EinAusgPlatz();
+		commandAction = new CommandAction();
 	}
 
 	public void auslagern(){
@@ -41,6 +44,7 @@ public class FassadeDisplay {
     		//Warten auf Kasse
     		System.out.println( "Auslagern: starte Stapler");
     		EAPlatz.Paketabholen(); 
+    		EAPlatz.EAPLatzinAusgangsstellungBringen(); 
     		System.out.println( "Auslagern: Klappe oeffnen");
     		Klappentuer.oeffnen(); 
     		System.out.println( "Auslagern: Packet entnommen");

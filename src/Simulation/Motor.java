@@ -1,4 +1,5 @@
 package Simulation;
+import java.util.*;
 
 public class Motor{
 
@@ -19,8 +20,9 @@ public class Motor{
 	}
 	
 	private int ErstelleMotoradresse(){
-		int xteMotorAdresse = MotorAdresseDefault + 1;
-		System.out.println("Motor: Motor mit der Adresse " + xteMotorAdresse + "erstellt.");
+		Random generator = new Random(); 
+		int xteMotorAdresse = MotorAdresseDefault + generator.nextInt();
+		System.out.println("Motor: Motor mit der Adresse " + xteMotorAdresse + " erstellt.");
 		return xteMotorAdresse; 
 	}
 	
