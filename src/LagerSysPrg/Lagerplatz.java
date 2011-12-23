@@ -15,8 +15,8 @@ public class Lagerplatz {
 	public Lagerplatz(Packet paket){
 		Paket = paket; 
 		Random generator = new Random(); 
-		this.Lagerplatznummer = generator.nextInt();
-		this.groesse = generator.nextInt(); 
+		this.Lagerplatznummer = generator.nextInt(255);
+		this.groesse = generator.nextInt(5000); 
 		BodenRampe = new BodenRampe(); 
 		Taster_Staplerangekommen = new Taster(); 
 		Taster_PaketImPlatz = new Taster(); 

@@ -15,7 +15,7 @@ public class Taster {
 
 	private int ErstelleAdresse() {
 		Random generator = new Random(); 
-		int xteTasterAdresse = TasterAdresseDefault + generator.nextInt(); 
+		int xteTasterAdresse = TasterAdresseDefault + generator.nextInt(255); 
 		System.out.println("Taster: Taster mit der Adresse " + xteTasterAdresse + " erstellt.");
 		return xteTasterAdresse;
 	}

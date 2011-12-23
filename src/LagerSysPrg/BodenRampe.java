@@ -38,7 +38,7 @@ public class BodenRampe {
 	
 	private int ErstelleAdresse() {
 		Random generator = new Random(); 
-		int xteBodenRampenAdresse = BodenRampenAdresseDefault + generator.nextInt(); 
+		int xteBodenRampenAdresse = BodenRampenAdresseDefault + generator.nextInt(255); 
 		System.out.println("BodenRampe: BodenRampe mit der Adresse " + xteBodenRampenAdresse + " erstellt.");
 		return xteBodenRampenAdresse;
 	}

@@ -42,7 +42,7 @@ public class Stapler {
 	
 	private int ErstelleStaplerAdresse(){
 		Random generator = new Random(); 
-		int xteStaplerAdresse = StaplerAdresseDefault + generator.nextInt(); 
+		int xteStaplerAdresse = StaplerAdresseDefault + generator.nextInt(255); 
 		System.out.println("Stapler: Stapler mit der Adresse " + xteStaplerAdresse + " erstellt.");
 		return xteStaplerAdresse;
 	}

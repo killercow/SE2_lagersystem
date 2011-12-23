@@ -19,7 +19,7 @@ public class Packet {
 
 
 	private int ErstellePaketCode() {
-		Random generator = new Random(); 
+		Random generator = new Random(1000000); 
 		return generator.nextInt();
 	}
 	

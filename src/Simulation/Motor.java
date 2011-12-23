@@ -21,7 +21,7 @@ public class Motor{
 	
 	private int ErstelleMotoradresse(){
 		Random generator = new Random(); 
-		int xteMotorAdresse = MotorAdresseDefault + generator.nextInt();
+		int xteMotorAdresse = MotorAdresseDefault + generator.nextInt(255);
 		System.out.println("Motor: Motor mit der Adresse " + xteMotorAdresse + " erstellt.");
 		return xteMotorAdresse; 
 	}

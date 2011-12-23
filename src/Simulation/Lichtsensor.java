@@ -13,7 +13,7 @@ public class Lichtsensor {
 
 	private int ErstelleAdresse() {
 		Random generator = new Random(); 
-		int xteLichtsensorAdresse = LichtsensorAdresseDefault + generator.nextInt(); 
+		int xteLichtsensorAdresse = LichtsensorAdresseDefault + generator.nextInt(255); 
 		System.out.println("Lichtsensor mit der Adresse " + xteLichtsensorAdresse + " erstellt.");
 		return xteLichtsensorAdresse;
 	}

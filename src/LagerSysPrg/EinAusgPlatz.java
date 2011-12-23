@@ -33,7 +33,7 @@ public class EinAusgPlatz {
 	
 	private int ErstelleEinAusgabePlatzAdresse(){
 		Random generator = new Random(); 
-		int xteEAPLatzAdresse = EAPlatzAdresseDefault + generator.nextInt(); 
+		int xteEAPLatzAdresse = EAPlatzAdresseDefault + generator.nextInt(255); 
 		System.out.println("EAPlatz mit der Adresse " + xteEAPLatzAdresse + " erstellt.");
 		return xteEAPLatzAdresse;
 	} 

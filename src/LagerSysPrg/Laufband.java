@@ -20,7 +20,7 @@ public class Laufband {
 	
 	private int ErstelleLaufbandAdresse(){
 		Random generator = new Random(); 
-		int xteLaufbandAdresse = LaufbandAdresseDefault + generator.nextInt(); 
+		int xteLaufbandAdresse = LaufbandAdresseDefault + generator.nextInt(255); 
 		System.out.println("Laufband: Laufband mit der Adresse " + xteLaufbandAdresse + " erstellt.");
 		return xteLaufbandAdresse;
 	}
