@@ -10,7 +10,6 @@ public class FassadeDisplay {
 	private Packet Paket = new Packet(); 
 	private KlappenTuer Klappentuer = new KlappenTuer(); 
 	private EinAusgPlatz EAPlatz = new EinAusgPlatz();
-	private Stapler Stapler = new Stapler(Paket); 
 	
 	public FassadeDisplay(){
 		
@@ -67,7 +66,6 @@ public class FassadeDisplay {
 	  		if(EAPlatz.Paketannehmen()){
 	  			System.out.println( "Einlagern: Klappe schliessen");
 	  			Klappentuer.schliessen(); 
-	  			Stapler.Paketaufnehmen(); 
 	  			EAPlatz.PaketaufBRzumStaplerfahren(); 
 	  			EAPlatz.EAPLatzinAusgangsstellungBringen(); 
 	  		}

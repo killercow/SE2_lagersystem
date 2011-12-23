@@ -14,11 +14,15 @@ public class EinAusgPlatz {
 	private int EAPlatzAdresseDefault = 0; 
 	public static int einausgabePlatzAdresse;
 	private Packet paket; 
+	private Lagerplatz Lagerplatz;
+	private Stapler Stapler; 
 	
 	public EinAusgPlatz(){
 		this.einausgabePlatzAdresse=ErstelleEinAusgabePlatzAdresse();
 		System.out.println("Sim: "+einausgabePlatzAdresse+" erstellt");
 		paket = new Packet(); 
+		Lagerplatz = new Lagerplatz(paket); 
+		Stapler = new Stapler(paket, Lagerplatz); 
 		bodenRampe = new BodenRampe();
 		BodenRampeMotorAdresse = bodenRampe.GetBodenRampenAdresse(); 
 		klappenTuer = new KlappenTuer(); 
@@ -32,7 +36,7 @@ public class EinAusgPlatz {
 		return xteEAPLatzAdresse;
 	} 
 	
-	public boolean Paketannehmen(){
+	public boolean Paketannehmen(){ 
 		if(klappenTuer.oeffnen()){
 			System.out.println("EAPLatz: Die Klappentür wurde geöffnet.");
 			//auf Button von der Gui warten
@@ -50,6 +54,13 @@ public class EinAusgPlatz {
 				int ZPosition = lichtsensorLeiste.GetZPosition(); 
 				int Groesse = (XPosition + YPosition + ZPosition) / 3; 
 				paket.setGroesse(Groesse); 
+				Stapler.Paketaufnehmen();
+				if(Stapler.StaplerfaehrtzurAusgabezurueck()){
+					System.out.println("EAPlatz: Der Stapler ist wieder in Ausgangssituation."); 
+				}
+				else{
+					System.out.println("EAPlatz: Der Stapler fährt wieder in Ausgangssituation."); 
+				}
 				return true; 
 			}
 			else{

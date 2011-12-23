@@ -22,8 +22,9 @@ public class Stapler {
 	private boolean MotorfaehrtinYRichtunghoch = false;
 	private int MotorStatus; 
 	private Packet paket; 
+	private int Lagerplatznummer; 
 	
-	public Stapler(Packet Paket){
+	public Stapler(Packet Paket, Lagerplatz lagerplatz){
 		this.StaplerAdresse = ErstelleStaplerAdresse();
 		motorXRichtung = new Motor(); 
 		motorXRichtungAdresse = motorXRichtung.GetMotorAdresse();
@@ -33,8 +34,8 @@ public class Stapler {
 		motorYRichtungSimulation = new Simulation.Motor();
 		laufband = new Laufband();
 		LaufbandMotorAdresse = laufband.Motor_AdresseLaufband;
-		paket = Paket; 
-		Lagerplatz = new Lagerplatz(paket);
+		paket = Paket;  
+		Lagerplatz = lagerplatz;
 		
 		StaplerfaehrtzurAusgabezurueck(); 
 		
@@ -89,24 +90,28 @@ public class Stapler {
 	
 	private void StaplerfahertmitPaketzumLagerplatz(){
 		StaplerRichtunguebergeben('r');
-		System.out.println("Stapler: Stapler ist am Lagerplatz angekommen.");
+		Lagerplatznummer = Lagerplatz.GetLagerplatznummer(); 
+		Lagerplatz.StaplerKommtMitPaket(); 
+		System.out.println("Stapler: Stapler ist am Lagerplatz "+ Lagerplatznummer +" angekommen.");
 		motorXRichtung.Motorausschalten(motorXRichtungAdresse);
 		Paketablegen(); 		
 	}
 
 	private void Paketablegen(){
 		StaplerRichtunguebergeben('h');
-		laufband.LaufbandMotor.Motorvorwaertsfahrenlassen(LaufbandMotorAdresse); 
+		laufband.LaufbandMotor.Motorvorwaertsfahrenlassen(LaufbandMotorAdresse);
+		Lagerplatz.PaketaufBRlegen(); 
 		System.out.println("Stapler: Paket liegt im Lagerplatz.");
 		laufband.LaufbandMotor.Motorausschalten(LaufbandMotorAdresse);
 		StaplerRichtunguebergeben('t');
 		StaplerfaehrtzurAusgabezurueck(); 
 	}
 	
-	private void StaplerfaehrtzurAusgabezurueck(){
+	public boolean StaplerfaehrtzurAusgabezurueck(){
 		StaplerRichtunguebergeben('v');
 		System.out.println("Stapler: Stapler ist an der Ausgabe angekommen.");
 		motorXRichtung.Motorausschalten(motorXRichtungAdresse);
+		return true; 
 	}
 	
 	public boolean FaehrtMotorXRichtungrueckwaerts(){

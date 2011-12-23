@@ -9,6 +9,7 @@ public class Lagerplatz {
 	public BodenRampe BodenRampe;
 	public Packet Paket;
 	public Taster Taster_Staplerangekommen;
+	public Taster Taster_PaketImPlatz; 
 	private int Lagerplatznummer;
 
 	public Lagerplatz(Packet paket){
@@ -17,6 +18,8 @@ public class Lagerplatz {
 		this.Lagerplatznummer = generator.nextInt();
 		this.groesse = generator.nextInt(); 
 		BodenRampe = new BodenRampe(); 
+		Taster_Staplerangekommen = new Taster(); 
+		Taster_PaketImPlatz = new Taster(); 
 	}
 
 	public int GetLagerplatznummer(){
@@ -29,8 +32,17 @@ public class Lagerplatz {
 	
 	public void StaplerKommtMitPaket(){
 		if(Taster_Staplerangekommen.WartenAufTaster()){
-			System.out.println("Lagerplatz: Der Stapler ist am Lagerplatz angekommen; "); 
+			System.out.println("Lagerplatz: Der Stapler ist am Lagerplatz angekommen. "); 
 			BodenRampe.BodenRampeGeradeStellen(); 
+		}
+	}
+	
+	public void PaketaufBRlegen(){
+		BodenRampe.BodenRampeSchraegStellen(); 
+		if(Taster_PaketImPlatz.WartenAufTaster()){
+			System.out.println("Lagerplatz: Das Paket liegt im Fach ");
+			BodenRampe.BodenRampeGeradeStellen(); 
+			BodenRampe.BodenRampeausschalten(); 
 		}
 	}
 	
