@@ -72,6 +72,37 @@ public class Stapler {
 		}
 	}
 	
+	public void ZumLagerplatzfahren(){
+		StaplerRichtunguebergeben('r');
+		Lagerplatznummer = Lagerplatz.GetLagerplatznummer(); 
+		Lagerplatz.StaplerKommtMitPaket(); 
+		System.out.println("Stapler: Stapler ist am Lagerplatz "+ Lagerplatznummer +" angekommen.");
+		motorXRichtung.Motorausschalten(motorXRichtungAdresse);
+		PaketaufnehmenvomLagerplatz(); 
+	}
+	
+
+	public boolean PaketaufnehmenvomLagerplatz() {
+		if(laufband.LaufbandMotor.GetMotorStatus() == 0){
+			laufband.LaufbandMotor.Motorvorwaertsfahrenlassen(LaufbandMotorAdresse); 
+		}
+		else{
+			if(laufband.LaufbandMotor.GetMotorStatus() == 2){
+				laufband.LaufbandMotor.Motorausschalten(LaufbandMotorAdresse); 
+				laufband.LaufbandMotor.Motorvorwaertsfahrenlassen(LaufbandMotorAdresse); 
+			}
+		}
+		System.out.println("Stapler: Paket liegt auf dem Laufband."); 
+		laufband.LaufbandMotor.Motorausschalten(LaufbandMotorAdresse); 
+		boolean istda = StaplerfaehrtzurAusgabezurueck();
+		return istda; 
+	}
+
+	public boolean PaketinAusgabeablegen() {
+		StaplerRichtunguebergeben('h');
+		laufband.LaufbandMotor.Motorvorwaertsfahrenlassen(LaufbandMotorAdresse);
+		return true; 
+	}
 
 	public void Paketaufnehmen(){
 		if(laufband.LaufbandMotor.GetMotorStatus() == 0){

@@ -15,7 +15,8 @@ public class EinAusgPlatz {
 	public static int einausgabePlatzAdresse;
 	private Packet paket; 
 	private Lagerplatz Lagerplatz;
-	private Stapler Stapler; 
+	private Stapler Stapler;
+	private int Paketpreis; 
 	
 	public EinAusgPlatz(){
 		this.einausgabePlatzAdresse=ErstelleEinAusgabePlatzAdresse();
@@ -36,6 +37,24 @@ public class EinAusgPlatz {
 		return xteEAPLatzAdresse;
 	} 
 	
+	public boolean Paketabholen(){
+		Stapler.ZumLagerplatzfahren(); 
+		if(Stapler.PaketaufnehmenvomLagerplatz()){
+			if(Stapler.PaketinAusgabeablegen()){
+				bodenRampe.BodenRampeSchraegStellen(); 
+				System.out.println("EAPlatz: Das Paket liegt jetzt auf der BR am EAPlatz.");
+				bodenRampe.BodenRampeGeradeStellen(); 
+				bodenRampe.BodenRampeausschalten();
+				return true; 
+			}else{
+				return false; 
+			}
+		}
+		else{
+			return false; 
+		}
+	}
+	
 	public boolean Paketannehmen(){ 
 		if(klappenTuer.oeffnen()){
 			System.out.println("EAPLatz: Die KlappentŸr wurde gešffnet.");
@@ -53,7 +72,8 @@ public class EinAusgPlatz {
 				int YPosition = lichtsensorLeiste.GetYPosition(); 
 				int ZPosition = lichtsensorLeiste.GetZPosition(); 
 				int Groesse = (XPosition + YPosition + ZPosition) / 3; 
-				paket.setGroesse(Groesse); 
+				paket.setGroesse(Groesse);
+				PreisfuerPaketberechnen(); 
 				Stapler.Paketaufnehmen();
 				if(Stapler.StaplerfaehrtzurAusgabezurueck()){
 					System.out.println("EAPlatz: Der Stapler ist wieder in Ausgangssituation."); 
@@ -70,6 +90,25 @@ public class EinAusgPlatz {
 		else{
 			System.out.println("EAPLatz: Fehler - Die KlappentŸr kann nicht gešffnet werden.");
 			return false; 
+		}
+	}
+	
+	public void PreisfuerPaketberechnen(){
+		if(paket.getGroesse() > 5000){
+			paket.setPreis(20); 
+		}
+		else{
+			paket.setPreis(2); 
+		}
+	}
+	
+	public void PreisfuerLagerzeitberechnen(){
+		int Preis = paket.getPreis(); 
+		if(paket.getAusLagZeit() != paket.getAusLagZeit()){
+			paket.setPreis(Preis+5); 
+		}
+		else{
+			paket.setPreis(Preis); 
 		}
 	}
 	

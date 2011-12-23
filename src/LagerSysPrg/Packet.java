@@ -10,6 +10,7 @@ public class Packet {
 	private float Gewicht;
 	private int Groesse;
 	private int PaketCode;
+	private int Preis; 
 
 	public Packet(){
 		this.PaketCode = ErstellePaketCode(); 
@@ -63,6 +64,16 @@ public class Packet {
 
 	public void setEinLagZeit(SimpleDateFormat einLagZeit) {
 		EinLagZeit = einLagZeit;
+	}
+
+
+	public int getPreis() {
+		return Preis;
+	}
+
+
+	public void setPreis(int preis) {
+		Preis = preis;
 	}
 
 }

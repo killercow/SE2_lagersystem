@@ -6,6 +6,7 @@
  * Weist den Comando Buttons (Einlagern, Auslagern) einen Händler zu. 
  */
 package LagerSysGui;
+import Fassade.*; 
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,7 +17,13 @@ import Fassade.*;
 
 public class CommandAction implements ActionListener
    {
-	Display Display = new Display();
+    public static boolean CodeOK=false; 
+    private String lastCommand;
+    public static boolean freigabe = false;
+	private Display Display = new Display();
+	private FassadeDisplay Fassade = new FassadeDisplay(); 
+	public int PaketCode = 0; 
+	
       public void actionPerformed(ActionEvent event)
       {
          String command = event.getActionCommand();
@@ -25,6 +32,11 @@ public class CommandAction implements ActionListener
                lastCommand = command;
                pruefeCommand();
       }
+      
+      public int GeteingegebenerCode(){
+    	  return PaketCode; 
+      }
+      
       public void pruefeCommand()
       {
          if (lastCommand.equals("C") && freigabe){
@@ -32,20 +44,19 @@ public class CommandAction implements ActionListener
         	 Display.CodeField.setText("");
          }
          else if (lastCommand.equals("B")&& freigabe) {
-        	 //FassadeDisplay.bestaetigt();
         
-      		int CodeListe=222; // Test Codes
+      		PaketCode = 222; // Test Codes
       		
-      		if (Integer.parseInt(Display.CodeField.getText())==CodeListe){
+      		if (Integer.parseInt(Display.CodeField.getText())==PaketCode){
       			System.out.println( "Auslagern: Code Akzeptiert");
       			Display.StatusField.setText("Eingabe Bestaetigt");
            	  	
       			CodeOK=true;
-           	  	FassadeDisplay.auslagern();	
+           	  	Fassade.auslagern();	
         	}else{
         		Display.StatusField.setText("Code nicht Akzeptiert");
         		System.out.println("Falscher Code");
-        		//CodeOK=false;
+        		CodeOK=false;
         		freigabe=false;
         		InsertAction.freigabe=false;
         }
@@ -55,15 +66,12 @@ public class CommandAction implements ActionListener
         	 //Display.StatusField.setText("Eingabe Bestaetigt");
          }
          if (lastCommand.equals("Abholen")){
-        	 FassadeDisplay.auslagern();
+        	 Fassade.auslagern();
          }
          if (lastCommand.equals("Einlagern")){
-        	 FassadeDisplay.einlagern();
+        	 Fassade.einlagern();
          }
          
       }
-      public static boolean CodeOK=false; 
-      private String lastCommand;
-      public boolean freigabe=false;
 
    }
