@@ -95,7 +95,7 @@ public class EinAusgPlatz {
 	}
 	
 	public void PreisfuerPaketberechnen(){
-		if(paket.getGroesse() > 5000){
+		if(paket.getGroesse() > 500){
 			paket.setPreis(20); 
 		}
 		else{
