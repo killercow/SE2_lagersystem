@@ -1,6 +1,6 @@
 package Simulation;
 
-public class inaktiv implements ITasterZustand {
+public class inaktiv implements ITasterZustand { // extends TasterZustand
 
 private TasterZustand Zustand; 
 	

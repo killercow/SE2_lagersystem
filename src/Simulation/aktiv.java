@@ -1,6 +1,6 @@
 package Simulation;
 
-public class aktiv implements ITasterZustand {
+public class aktiv implements ITasterZustand {// extends TasterZustand
 
 	private TasterZustand Zustand; 
 	
@@ -14,7 +14,7 @@ public class aktiv implements ITasterZustand {
 
 	public void inaktiv() {
 		System.out.println("TasterZustand: Taster wird inaktiv gestellt!"); 
-		Zustand.setzeAktuellenZustand(new aktiv(Zustand)); 
+		Zustand.setzeAktuellenZustand(new inaktiv(Zustand)); 
 		Zustand.setStatus(0); 
 		
 	}

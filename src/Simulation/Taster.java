@@ -5,9 +5,8 @@ import java.util.*;
 public class Taster {
 
 	private int TasterAdresseDefault = 0; 
-	public static int TasterAdresse;
+	public int TasterAdresse;
 	private TasterZustand tasterZustand = new TasterZustand(); 
-	public boolean TasterIstAktiv = false; 
 
 	public Taster(){
 		this.TasterAdresse = ErstelleAdresse(); 
