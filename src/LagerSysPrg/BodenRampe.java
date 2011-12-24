@@ -4,8 +4,7 @@ import java.util.*;
 
 public class BodenRampe {
 	
-	public static int BodenRampenAdresse;
-	private int BodenRampenAdresseDefault = 0; 
+	public int BodenRampenAdresse; 
 	public Motor bodenRampenMotor;
 	private int bodenRampenMotorAdresse; 
 	public ZustandRampe zustandRampe;
@@ -14,18 +13,10 @@ public class BodenRampe {
 	private int TasterobenAdresse; 
 	private Taster Tasterunten;
 	private int TasteruntenAdresse; 
-	private ZustandRampe BodenRampeZustand = new ZustandRampe(); 
+	private ZustandRampe BodenRampeZustand = new ZustandRampe();
+	private Random generator = new Random(); 
 
-	public BodenRampe(){
-		this.BodenRampenAdresse= ErstelleAdresse(); 
-		bodenRampenMotor = new Motor(); 
-		bodenRampenMotorAdresse = bodenRampenMotor.GetMotorAdresse(); 
-		bodenRampenMotor = new Simulation.Motor();
-		Tasteroben = new Taster();
-		TasterobenAdresse = Tasteroben.GetTasterAdresse(); 
-		Tasterunten = new Taster(); 
-		TasteruntenAdresse = Tasterunten.GetTasterAdresse(); 
-		
+	public BodenRampe(){  
 	}
 	
 	public int GetBodenRampenZustand(){
@@ -36,11 +27,9 @@ public class BodenRampe {
 		return BodenRampenAdresse; 
 	}
 	
-	private int ErstelleAdresse() {
-		Random generator = new Random(); 
-		int xteBodenRampenAdresse = BodenRampenAdresseDefault + generator.nextInt(255); 
-		System.out.println("BodenRampe: BodenRampe mit der Adresse " + xteBodenRampenAdresse + " erstellt.");
-		return xteBodenRampenAdresse;
+	public void ErstelleAdresse() {
+		BodenRampenAdresse = generator.nextInt(255); 
+		System.out.println("BodenRampe: BodenRampe mit der Adresse " + BodenRampenAdresse + " erstellt.");
 	}
 
 	public void BodenRampeausschalten(){

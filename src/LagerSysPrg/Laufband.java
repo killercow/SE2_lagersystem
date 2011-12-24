@@ -4,25 +4,19 @@ import java.util.*;
 
 public class Laufband {
 
-	public Motor LaufbandMotor_Simulation;
 	public Motor LaufbandMotor;	
 	public boolean bewegungvor = true; 
 	private int LaufbandAdresse; 
-	private static int LaufbandAdresseDefault = 0; 
 	public static int Motor_AdresseLaufband; 
-	private int MotorStatus; 
+	private int MotorStatus;
+	private Random generator = new Random();
 
 	public Laufband(){
-		this.LaufbandAdresse = ErstelleLaufbandAdresse(); 
-		LaufbandMotor = new Motor();
-		Motor_AdresseLaufband = Motor.GetMotorAdresse(); 
 	}
 	
-	private int ErstelleLaufbandAdresse(){
-		Random generator = new Random(); 
-		int xteLaufbandAdresse = LaufbandAdresseDefault + generator.nextInt(255); 
-		System.out.println("Laufband: Laufband mit der Adresse " + xteLaufbandAdresse + " erstellt.");
-		return xteLaufbandAdresse;
+	public void ErstelleLaufbandAdresse(){
+		LaufbandAdresse= generator.nextInt(255); 
+		System.out.println("Laufband: Laufband mit der Adresse " + LaufbandAdresse + " erstellt.");
 	}
 	
 	public boolean StehtderMotor(){

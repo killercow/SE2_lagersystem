@@ -12,19 +12,8 @@ public class Kasse {
 	private int AnzZwanzigCent;
 	private int AnzZwanzigEur;
 	private int AnzZweiEur;
-	public FassadeDisplay m_Display;
-	public FassadeDisplay m_FassadeDisplay;
 
 	public Kasse(){
-
-	}
-
-	/**
-	 * 
-	 * @exception Throwable Throwable
-	 */
-	public void finalize()
-	  throws Throwable{
 
 	}
 

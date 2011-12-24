@@ -12,30 +12,20 @@ public class EinAusgPlatz {
 	public KlappenTuer klappenTuer;
 	public LichtsensorLeiste lichtsensorLeiste;
 	public Gewichtsensor gewichtsensor; 
-	private int EAPlatzAdresseDefault = 0; 
 	public static int einausgabePlatzAdresse;
 	private Paket paket; 
 	private Lagerplatz Lagerplatz;
 	private Stapler Stapler;
-	private int Paketpreis; 
+	private int Paketpreis;
+	private int EAPlatzAdresse; 
+	private Random generator = new Random(); 
 	
 	public EinAusgPlatz(){
-		this.einausgabePlatzAdresse=ErstelleEinAusgabePlatzAdresse();
-		paket = new Paket(); 
-		Lagerplatz = new Lagerplatz(paket); 
-		Stapler = new Stapler(paket, Lagerplatz); 
-		bodenRampe = new BodenRampe();
-		BodenRampeMotorAdresse = bodenRampe.GetBodenRampenAdresse(); 
-		klappenTuer = new KlappenTuer(); 
-		lichtsensorLeiste = new LichtsensorLeiste(); 
-		gewichtsensor = new Gewichtsensor(); 
 	}
 	
-	private int ErstelleEinAusgabePlatzAdresse(){
-		Random generator = new Random(); 
-		int xteEAPLatzAdresse = EAPlatzAdresseDefault + generator.nextInt(255); 
-		System.out.println("EAPlatz mit der Adresse " + xteEAPLatzAdresse + " erstellt.");
-		return xteEAPLatzAdresse;
+	public void ErstelleEinAusgabePlatzAdresse(){
+		EAPlatzAdresse = generator.nextInt(255); 
+		System.out.println("EAPlatz mit der Adresse " + EAPlatzAdresse + " erstellt.");
 	} 
 	
 	public boolean Paketabholen(){

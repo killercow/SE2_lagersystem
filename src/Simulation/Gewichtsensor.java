@@ -3,18 +3,15 @@ import java.util.*;
 
 public class Gewichtsensor {
 
-	private int GewichtsensorAdresseDefault = 0; 
-	public static int GewichtsensorAdresse;
+	public int GewichtsensorAdresse;
+	private Random generator = new Random();
 
-	public Gewichtsensor(){
-		this.GewichtsensorAdresse = ErstelleAdresse(); 
+	public Gewichtsensor(){ 
 	}
 
-	private int ErstelleAdresse() {
-		Random generator = new Random();
-		int xteGewichtsensorAdresse = GewichtsensorAdresseDefault + generator.nextInt(255); 
-		System.out.println("Gewichtsensor mit der Adresse " + xteGewichtsensorAdresse + " erstellt.");
-		return xteGewichtsensorAdresse;
+	public void ErstelleAdresse() {		
+		GewichtsensorAdresse = generator.nextInt(255); 
+		System.out.println("Gewichtsensor mit der Adresse " + GewichtsensorAdresse + " erstellt.");
 	}
 
 	public int MesseGewicht(){

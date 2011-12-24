@@ -16,7 +16,7 @@ public class Stapler {
 	public Simulation.Motor motorXRichtungSimulation;
 	public Simulation.Motor motorYRichtungSimulation;
 	
-	private static int StaplerAdresseDefault = 0;
+
 	private int StaplerAdresse;
 	private boolean MotorfaehrtinXRichtung = false; 
 	private boolean MotorfaehrtinXRichtungrueckwarts = false; 
@@ -24,27 +24,14 @@ public class Stapler {
 	private int MotorStatus; 
 	private Paket paket; 
 	private int Lagerplatznummer; 
+	private Random generator = new Random(); 
 	
-	public Stapler(Paket Paket, Lagerplatz lagerplatz){
-		this.StaplerAdresse = ErstelleStaplerAdresse();
-		motorXRichtung = new Motor(); 
-		motorXRichtungAdresse = motorXRichtung.GetMotorAdresse();
-		motorYRichtung = new Motor(); 
-		motorYRichtungAdresse = motorYRichtung.GetMotorAdresse();
-		laufband = new Laufband();
-		LaufbandMotorAdresse = laufband.Motor_AdresseLaufband;
-		paket = Paket;  
-		Lagerplatz = lagerplatz;
-		
-		StaplerfaehrtzurAusgabezurueck(); 
-		
+	public Stapler(){
 	}
 	
-	private int ErstelleStaplerAdresse(){
-		Random generator = new Random(); 
-		int xteStaplerAdresse = StaplerAdresseDefault + generator.nextInt(255); 
-		System.out.println("Stapler: Stapler mit der Adresse " + xteStaplerAdresse + " erstellt.");
-		return xteStaplerAdresse;
+	public void ErstelleStaplerAdresse(){
+		StaplerAdresse = generator.nextInt(255); 
+		System.out.println("Stapler: Stapler mit der Adresse " + StaplerAdresse + " erstellt.");
 	}
 	
 	public boolean StehtDerMotor(Motor motor){

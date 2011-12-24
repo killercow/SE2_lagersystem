@@ -3,27 +3,24 @@ import java.util.*;
 
 public class Motor{
 
-	private static int MotorAdresse;
-	private static int MotorAdresseDefault = 0; 
-	private MotorZustand MotorStatus = new MotorZustand(); 
+	private int MotorAdresse;
+	private MotorZustand MotorStatus = new MotorZustand();
+	private Random generator = new Random(); 
 
 	public Motor(){
-		this.MotorAdresse = ErstelleMotoradresse(); 
 	}
 	
 	public int GetMotorStatus(){
 		return MotorStatus.getStatus(); 
 	}
 	
-	public static int GetMotorAdresse(){
+	public int GetMotorAdresse(){
 		return MotorAdresse; 
 	}
 	
-	private int ErstelleMotoradresse(){
-		Random generator = new Random(); 
-		int xteMotorAdresse = MotorAdresseDefault + generator.nextInt(255);
-		System.out.println("Motor: Motor mit der Adresse " + xteMotorAdresse + " erstellt.");
-		return xteMotorAdresse; 
+	public void ErstelleMotoradresse(){
+		MotorAdresse = generator.nextInt(255);
+		System.out.println("Motor: Motor mit der Adresse " + MotorAdresse + " erstellt.");
 	}
 	
 	public void Motorvorwaertsfahrenlassen(int MotorAdresse){

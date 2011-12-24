@@ -3,20 +3,17 @@ import java.util.*;
 
 
 public class Taster {
-
-	private int TasterAdresseDefault = 0; 
+ 
 	public int TasterAdresse;
 	private TasterZustand tasterZustand = new TasterZustand(); 
+	private Random generator = new Random(); 
 
 	public Taster(){
-		this.TasterAdresse = ErstelleAdresse(); 
 	}
 
-	private int ErstelleAdresse() {
-		Random generator = new Random(); 
-		int xteTasterAdresse = TasterAdresseDefault + generator.nextInt(255); 
-		System.out.println("Taster: Taster mit der Adresse " + xteTasterAdresse + " erstellt.");
-		return xteTasterAdresse;
+	public void ErstelleAdresse() {
+		TasterAdresse = generator.nextInt(255); 
+		System.out.println("Taster: Taster mit der Adresse " + TasterAdresse + " erstellt.");
 	}
 	
 	public int GetTasterAdresse(){

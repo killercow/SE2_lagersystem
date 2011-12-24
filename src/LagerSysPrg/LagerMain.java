@@ -7,7 +7,8 @@ public class LagerMain {
 	private static Init init; 
 	
 	public static void main(String[] args) {
-		init = new Init(); 
+		init = new Init();
+		init.ErstelleLagerRaum(); 
 	}
 
 }

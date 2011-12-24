@@ -13,12 +13,6 @@ public class KlappenTuer {
 	private boolean Klappentueristoffen = false; 
 
 	public KlappenTuer(){
-		KlappentuerMotor = new Motor(); 
-		KlappentuerMotorAdresse = KlappentuerMotor.GetMotorAdresse(); 
-		Taster_auf = new Taster(); 
-		Taster_auf_Adresse = Taster_auf.GetTasterAdresse(); 
-		Taster_zu = new Taster(); 
-		Taster_zu_Adresse = Taster_zu.GetTasterAdresse(); 
 	}
 	
 	public int GetKlappentuerStatus(){

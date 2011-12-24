@@ -11,15 +11,13 @@ public class Lagerplatz {
 	public Taster Taster_Staplerangekommen;
 	public Taster Taster_PaketImPlatz; 
 	private int Lagerplatznummer;
-
-	public Lagerplatz(Paket paket){
-		Paket = paket; 
-		Random generator = new Random(); 
-		this.Lagerplatznummer = generator.nextInt(255);
-		this.groesse = generator.nextInt(5000); 
-		BodenRampe = new BodenRampe(); 
-		Taster_Staplerangekommen = new Taster(); 
-		Taster_PaketImPlatz = new Taster(); 
+	private Random generator = new Random();
+	
+	public Lagerplatz(){ 
+	}
+	
+	public void ErstelleLagerplatzAdresse(){
+		Lagerplatznummer = generator.nextInt(255);
 	}
 
 	public int GetLagerplatznummer(){
@@ -27,6 +25,7 @@ public class Lagerplatz {
 	}
 	
 	public int GetLagerplatzgroesse(){
+		groesse = generator.nextInt(5000);
 		return groesse; 
 	}
 	
