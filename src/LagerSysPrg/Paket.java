@@ -3,7 +3,7 @@ package LagerSysPrg;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class Packet {
+public class Paket {
 
 	private SimpleDateFormat AusLagZeit = new SimpleDateFormat("HH:mm");
 	private SimpleDateFormat EinLagZeit = new SimpleDateFormat("HH:mm");
@@ -12,15 +12,22 @@ public class Packet {
 	private int PaketCode;
 	private int Preis; 
 
-	public Packet(){
-		this.PaketCode = ErstellePaketCode(); 
-		System.out.println("Paket: Der PaketCode lautet: " + PaketCode); 
+	public Paket(){
+		
 	}
 
-
-	private int ErstellePaketCode() {
-		Random generator = new Random(1000000); 
-		return generator.nextInt();
+	public void ErstellePaketCode() {
+		Random generator = new Random(); 
+		this.PaketCode = generator.nextInt(1000000);
+		System.out.println("Paket: Der PaketCode lautet: " + PaketCode); 
+	}
+	
+	public boolean Paketeinlagern(){
+		return false; 
+	}
+	
+	public boolean Paketauslagern(){
+		return false; 
 	}
 	
 	public int GetPaketCode(){

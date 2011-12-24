@@ -22,10 +22,10 @@ public class Stapler {
 	private boolean MotorfaehrtinXRichtungrueckwarts = false; 
 	private boolean MotorfaehrtinYRichtunghoch = false;
 	private int MotorStatus; 
-	private Packet paket; 
+	private Paket paket; 
 	private int Lagerplatznummer; 
 	
-	public Stapler(Packet Paket, Lagerplatz lagerplatz){
+	public Stapler(Paket Paket, Lagerplatz lagerplatz){
 		this.StaplerAdresse = ErstelleStaplerAdresse();
 		motorXRichtung = new Motor(); 
 		motorXRichtungAdresse = motorXRichtung.GetMotorAdresse();

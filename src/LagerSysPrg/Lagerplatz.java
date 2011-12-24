@@ -7,12 +7,12 @@ public class Lagerplatz {
 	private boolean belegt;
 	private int groesse;
 	public BodenRampe BodenRampe;
-	public Packet Paket;
+	public Paket Paket;
 	public Taster Taster_Staplerangekommen;
 	public Taster Taster_PaketImPlatz; 
 	private int Lagerplatznummer;
 
-	public Lagerplatz(Packet paket){
+	public Lagerplatz(Paket paket){
 		Paket = paket; 
 		Random generator = new Random(); 
 		this.Lagerplatznummer = generator.nextInt(255);

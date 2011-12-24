@@ -14,14 +14,14 @@ public class EinAusgPlatz {
 	public Gewichtsensor gewichtsensor; 
 	private int EAPlatzAdresseDefault = 0; 
 	public static int einausgabePlatzAdresse;
-	private Packet paket; 
+	private Paket paket; 
 	private Lagerplatz Lagerplatz;
 	private Stapler Stapler;
 	private int Paketpreis; 
 	
 	public EinAusgPlatz(){
 		this.einausgabePlatzAdresse=ErstelleEinAusgabePlatzAdresse();
-		paket = new Packet(); 
+		paket = new Paket(); 
 		Lagerplatz = new Lagerplatz(paket); 
 		Stapler = new Stapler(paket, Lagerplatz); 
 		bodenRampe = new BodenRampe();
