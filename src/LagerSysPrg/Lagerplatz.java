@@ -18,6 +18,7 @@ public class Lagerplatz {
 	
 	public void ErstelleLagerplatzAdresse(){
 		Lagerplatznummer = generator.nextInt(255);
+		System.out.println("Lagerplatz: Laufband mit der Adresse " + Lagerplatznummer + " erstellt.");
 	}
 
 	public int GetLagerplatznummer(){

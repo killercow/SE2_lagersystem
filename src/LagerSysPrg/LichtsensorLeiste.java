@@ -4,28 +4,24 @@ import java.util.*;
 public class LichtsensorLeiste {
 
 	private int LichtsensorMatrixAdresse;
-	private int LichtsensorMatrixAdresseDefault = 0; 
 	public int XPosition = 0; 
 	public int YPosition = 0; 
 	public int ZPosition = 0; 
+	private Random generator = new Random();
 	
 
 	public LichtsensorLeiste(){
-		this.LichtsensorMatrixAdresse = ErstelleAdresse(); 
 	}
 
-	private int ErstelleAdresse() {
-		Random generator = new Random();
-		int xteLichtsensorMatixAdresse = LichtsensorMatrixAdresseDefault +generator.nextInt(255); 
-		System.out.println("LichtsensorMatrix mit der Adresse " + xteLichtsensorMatixAdresse + " erstellt.");
-		return xteLichtsensorMatixAdresse;
+	public void ErstelleAdresse() {	
+		LichtsensorMatrixAdresse = generator.nextInt(255); 
+		System.out.println("LichtsensorMatrix mit der Adresse " +LichtsensorMatrixAdresse + " erstellt.");
 	}
 
 	public void MesseGroesse(){
-		Random generator = new Random(); 
-		XPosition = generator.nextInt(); 
-		YPosition = generator.nextInt(); 
-		ZPosition = generator.nextInt(); 	
+		XPosition = generator.nextInt(500); 
+		YPosition = generator.nextInt(500); 
+		ZPosition = generator.nextInt(500); 	
 	}
 	
 	public int GetXPosition(){

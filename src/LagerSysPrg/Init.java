@@ -40,6 +40,10 @@ public class Init {
 	
 	
 	public Init(){
+		EAPlatzLichtsensorMatrix = new LichtsensorLeiste(); 
+		EAPlatzLichtsensorMatrix.ErstelleAdresse(); 
+		EAPlatzGewichtssensor = new Gewichtsensor(); 
+		EAPlatzGewichtssensor.ErstelleAdresse(); 
 		Stapler = new Stapler(); 
 		Stapler.ErstelleStaplerAdresse(); 
 		EAPlatz = new EinAusgPlatz(); 

@@ -11,11 +11,7 @@ public class Stapler {
 	private Motor motorXRichtung;
 	private static int motorXRichtungAdresse; 
 	private Motor motorYRichtung;
-	private static int motorYRichtungAdresse; 
-	
-	public Simulation.Motor motorXRichtungSimulation;
-	public Simulation.Motor motorYRichtungSimulation;
-	
+	private static int motorYRichtungAdresse;
 
 	private int StaplerAdresse;
 	private boolean MotorfaehrtinXRichtung = false; 
