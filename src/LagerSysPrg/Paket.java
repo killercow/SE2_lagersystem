@@ -13,7 +13,6 @@ public class Paket {
 	private int Preis; 
 
 	public Paket(){
-		
 	}
 
 	public void ErstellePaketCode() {

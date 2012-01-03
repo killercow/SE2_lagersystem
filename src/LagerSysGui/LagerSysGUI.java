@@ -39,14 +39,12 @@ public class LagerSysGUI{
 	
 	private JButton einlagern = null;
 	private JButton auslagern = null;
-	boolean freigabe = false;
-	private FassadeDisplay Fassade; 
+	boolean freigabe = false; 
 	
 	public LagerSysGUI() {
 		//getLagerSysFrame();
 		super();
 		initialize();
-		Fassade = new FassadeDisplay(); 
 		
 	}
 
@@ -153,7 +151,6 @@ public class LagerSysGUI{
 			einlagern.setEnabled(false);
 			CodeField.setText("");
 			freigabe = true;
-			Fassade.auslagern(); 
 		}
 		else if(comand=="Einlagern"){
 			System.out.println("Einlagern wurde gedrückt!"); 
@@ -167,7 +164,6 @@ public class LagerSysGUI{
 		     	// Formatierung zu String:
 		  	System.out.println( "Einlagern: Date = " + df.format( dt ) );        // z.B. '2001-01-26 19:03:56.731'
 		  	ZeitField.setText(time.format(dt));
-			Fassade.einlagern(); 
 		}
 		else if(comand=="Abbruch"){
 			System.out.println("Abbruch wurde gedrückt!");

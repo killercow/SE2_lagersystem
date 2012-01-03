@@ -15,7 +15,7 @@ public class LichtsensorLeiste {
 
 	public void ErstelleAdresse() {	
 		LichtsensorMatrixAdresse = generator.nextInt(255); 
-		System.out.println("LichtsensorMatrix mit der Adresse " +LichtsensorMatrixAdresse + " erstellt.");
+		System.out.println("LichtsensorMatrix mit der Adresse " + LichtsensorMatrixAdresse + " erstellt.");
 	}
 
 	public void MesseGroesse(){

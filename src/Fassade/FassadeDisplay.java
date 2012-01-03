@@ -10,13 +10,8 @@ public class FassadeDisplay {
 	private Paket Paket;  
 	private KlappenTuer Klappentuer;  
 	private EinAusgPlatz EAPlatz; 
-	private CommandAction commandAction; 
 	
 	public FassadeDisplay(){
-		Paket = new Paket(); 
-		Klappentuer = new KlappenTuer();
-		EAPlatz = new EinAusgPlatz();
-		commandAction = new CommandAction();
 	}
 
 	//public void auslagern(){

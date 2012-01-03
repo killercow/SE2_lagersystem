@@ -1,6 +1,7 @@
 package LagerSysPrg;
 
 import Simulation.*;
+import LagerSysGui.*; 
 
 public class Init {
 	
@@ -38,6 +39,8 @@ public class Init {
 	public Gewichtsensor EAPlatzGewichtssensor; 
 	public LichtsensorLeiste EAPlatzLichtsensorMatrix; 
 	
+	public LagerSysGUI GUI; 
+	 
 	
 	public Init(){
 		EAPlatzLichtsensorMatrix = new LichtsensorLeiste(); 
@@ -85,6 +88,7 @@ public class Init {
 		StaplerMotorYRichtung.ErstelleMotoradresse(); 
 		KlappentuerMotor = new Motor(); 
 		KlappentuerMotor.ErstelleMotoradresse(); 
+		GUI = new LagerSysGUI(); 
 	}
 	
 	public void ErstelleLagerRaum(){
@@ -114,6 +118,7 @@ public class Init {
 		Motorarray[3] = StaplerMotorYRichtung; 
 		Motorarray[4] = KlappentuerMotor; 
 		System.out.println("Das Motorarray ist befüllt. "); 
+		System.out.println("Der Lagerraum wurde erstellt."); 
 	}
 	
 	
