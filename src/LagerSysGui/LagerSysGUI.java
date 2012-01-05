@@ -1,5 +1,5 @@
 package LagerSysGui;
-import Fassade.*; 
+import LagerSysPrg.*; 
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,6 +9,7 @@ import java.awt.Rectangle;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 import javax.swing.JTextField;
@@ -39,7 +40,11 @@ public class LagerSysGUI{
 	
 	private JButton einlagern = null;
 	private JButton auslagern = null;
-	boolean freigabe = false; 
+	private boolean freigabe = false; 
+	
+	public Paket Paket; 
+	public Paket[] Paketarray = new Paket[5]; 
+	
 	
 	public LagerSysGUI() {
 		//getLagerSysFrame();
@@ -50,6 +55,11 @@ public class LagerSysGUI{
 
 	private void initialize(){
 		
+		Paketarray[0] = null; 
+		Paketarray[1] = null;
+		Paketarray[2] = null;
+		Paketarray[3] = null;
+		Paketarray[4] = null;
 		getLagerSysFrame();
 	}
 	
@@ -142,15 +152,66 @@ public class LagerSysGUI{
 		return auslagern;
 	}
 	
+	private boolean istPaketbereitsvorhanden(Paket paket){ 
+		int i; 
+		for(i = 0; i < 5; i++){
+			if(Paketarray[i] != null && Paketarray[i].GetPaketCode() == paket.GetPaketCode()){
+				return true; 
+			}
+			else{
+				return false; 
+			}
+		}
+		return false; 
+	}
+	
+	private boolean istPlatzImArray(Paket paket){
+		for(int i = 0; i < 5; i++){
+			if(Paketarray[i] == null ){
+				Paketarray[i] = paket; 
+				return true; 
+			}
+		}
+		return false; 
+	}
+	
+	private int ermittelnDerLagerplatzNummer(){
+		for(int i = 0; i < 6; i++){
+			if(LagerMain.init.Lagerplatzarray[i].getBelegt() == false){
+				return LagerMain.init.Lagerplatzarray[i].GetLagerplatznummer(); 
+			}
+		}
+		return -1; 
+	}
+	
+	private Paket FindePaketImPaketarray(int paketCode){
+		for(int i  = 0; i < 6; i++){
+			if(Paketarray[i].GetPaketCode() == paketCode ){
+				return Paketarray[i]; 
+			}
+		}
+		return null; 
+	} 
+	
 	
 	private void eingabe(String comand)
     {
+		boolean Paketistbereitsvorhanden; 
+		boolean paketHatPlatzGefunden;
+		
 		if(comand=="Abholen"){
 			System.out.println("Abholen wurde gedrückt!"); 
 			StatusField.setText(comand);
 			einlagern.setEnabled(false);
 			CodeField.setText("");
 			freigabe = true;
+			int paketCode = Integer.parseInt(CodeField.getText()); 
+			Paket paket = FindePaketImPaketarray(paketCode); 
+			int lagerplatzNummer = paket.getLagerplatznummer(); 
+			paket.Paketauslagern(lagerplatzNummer); 
+			PreisField.setText(Integer.toString(paket.getPreis())); 
+			paket.finalize(); 
+			
 		}
 		else if(comand=="Einlagern"){
 			System.out.println("Einlagern wurde gedrückt!"); 
@@ -164,6 +225,35 @@ public class LagerSysGUI{
 		     	// Formatierung zu String:
 		  	System.out.println( "Einlagern: Date = " + df.format( dt ) );        // z.B. '2001-01-26 19:03:56.731'
 		  	ZeitField.setText(time.format(dt));
+		  	Paket = new Paket(); 
+		  	Paket.ErstellePaketCode(); 
+		  	Paket.setEinLagZeit(time); 
+		  	int lagerplatzNummer = ermittelnDerLagerplatzNummer(); 
+		  	if( lagerplatzNummer >= 0){
+		  		Paket.setLagerplatznummer(lagerplatzNummer); 
+		  	} 
+		  	else{
+		  		System.out.println("Es gibt keinen freien Lagerplatz mehr!");
+		  		Paket.finalize(); 
+		  		eingabe("Abbruch"); 
+		  	}
+		  	Paketistbereitsvorhanden = istPaketbereitsvorhanden(Paket); 
+		  	if(!Paketistbereitsvorhanden){
+		  		paketHatPlatzGefunden = istPlatzImArray(Paket);
+		  		if(paketHatPlatzGefunden){
+		  			System.out.println("Paket hat einen Platz gefunden!"); 
+		  			Paket.Paketeinlagern();
+		  		}
+		  		else{
+		  			System.out.println("Das Paket hat keinen Platz gefunden!");
+		  			Paket.finalize(); 
+		  			eingabe("Abbruch"); 
+		  		}
+		  	}
+		  	else{
+		  		System.out.println("Das Paket ist im Lager vorhanden."); 
+		  	}
+		  	
 		}
 		else if(comand=="Abbruch"){
 			System.out.println("Abbruch wurde gedrückt!");

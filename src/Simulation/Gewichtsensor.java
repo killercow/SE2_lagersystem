@@ -15,7 +15,6 @@ public class Gewichtsensor {
 	}
 
 	public int MesseGewicht(){
-		Random generator = new Random(); 
 		return generator.nextInt(500); 
 	}
 

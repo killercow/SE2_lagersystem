@@ -5,7 +5,7 @@ import LagerSysGui.*;
 
 public class Init {
 	
-	public  Stapler Stapler;
+	public Stapler Stapler;
 	
 	public BodenRampe[] BodenRampenarray = new BodenRampe[2]; 
 	public BodenRampe BodenRampeEAPlatz; 

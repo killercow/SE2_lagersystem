@@ -1,15 +1,8 @@
 package LagerSysPrg;
-import Simulation.*; 
 
 public class KlappenTuer {
 
-	public Motor KlappentuerMotor;
-	private int KlappentuerMotorAdresse; 
 	public ZustandTuer KlappentuerZustand = new ZustandTuer();
-	public Taster Taster_auf;
-	private int Taster_auf_Adresse; 
-	public Taster Taster_zu;
-	private int Taster_zu_Adresse; 
 	private boolean Klappentueristoffen = false; 
 
 	public KlappenTuer(){
@@ -26,16 +19,16 @@ public class KlappenTuer {
 		}
 		else{
 			System.out.println("KlappenTuer: Die Klappentür wird geöffnet!");
-			KlappentuerMotor.Motorvorwaertsfahrenlassen(KlappentuerMotorAdresse); 
-			if(Taster_auf.WartenAufTaster()){
+			LagerMain.init.KlappentuerMotor.Motorvorwaertsfahrenlassen(LagerMain.init.KlappentuerMotor.GetMotorAdresse()); 
+			if(LagerMain.init.KlappentuerTaster_auf.WartenAufTaster()){
 				System.out.println("KlappenTuer: Die Klappentür ist geöffnet!");
-				KlappentuerMotor.Motorausschalten(KlappentuerMotorAdresse); 
+				LagerMain.init.KlappentuerMotor.Motorausschalten(LagerMain.init.KlappentuerMotor.GetMotorAdresse()); 
 				KlappentuerZustand.setStatus(1); 
 				return Klappentueristoffen = true; 
 			}
 			else{
 				System.out.println("KlappenTuer: Die Klappentürtaster hat einen Fehler!");
-				KlappentuerMotor.Motorausschalten(KlappentuerMotorAdresse); 
+				LagerMain.init.KlappentuerMotor.Motorausschalten(LagerMain.init.KlappentuerMotor.GetMotorAdresse()); 
 				return Klappentueristoffen = false; 
 			}
 		}
@@ -49,16 +42,16 @@ public class KlappenTuer {
 		}
 		else{
 			System.out.println("KlappenTuer: Die Klappentür wird geschlossen!");
-			KlappentuerMotor.Motorrueckwaertsfahrenlassen(KlappentuerMotorAdresse); 
-			if(Taster_zu.WartenAufTaster()){
+			LagerMain.init.KlappentuerMotor.Motorrueckwaertsfahrenlassen(LagerMain.init.KlappentuerMotor.GetMotorAdresse()); 
+			if(LagerMain.init.KlappentuerTaster_zu.WartenAufTaster()){
 				System.out.println("KlappenTuer: Die Klappentür ist geschlossen!");
-				KlappentuerMotor.Motorausschalten(KlappentuerMotorAdresse); 
+				LagerMain.init.KlappentuerMotor.Motorausschalten(LagerMain.init.KlappentuerMotor.GetMotorAdresse()); 
 				KlappentuerZustand.setStatus(0); 
 				return Klappentueristoffen = false; 
 			}
 			else{
 				System.out.println("KlappenTuer: Die Klappentürtaster hat einen Fehler!");
-				KlappentuerMotor.Motorausschalten(KlappentuerMotorAdresse); 
+				LagerMain.init.KlappentuerMotor.Motorausschalten(LagerMain.init.KlappentuerMotor.GetMotorAdresse()); 
 				return Klappentueristoffen = true; 
 			}
 		}

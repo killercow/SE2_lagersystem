@@ -4,10 +4,8 @@ import java.util.*;
 
 public class Laufband {
 
-	public Motor LaufbandMotor;	
 	public boolean bewegungvor = true; 
 	private int LaufbandAdresse; 
-	public static int Motor_AdresseLaufband; 
 	private int MotorStatus;
 	private Random generator = new Random();
 
@@ -20,7 +18,7 @@ public class Laufband {
 	}
 	
 	public boolean StehtderMotor(){
-		MotorStatus = LaufbandMotor.GetMotorStatus(); 
+		MotorStatus = LagerMain.init.LaufbandMotor.GetMotorStatus(); 
 		if(MotorStatus == 0){
 			return true; 
 		}else{
@@ -34,12 +32,12 @@ public class Laufband {
 
 	public void Bewegungvorwaerts(){
 		if(StehtderMotor()){
-			LaufbandMotor.Motorvorwaertsfahrenlassen(Motor_AdresseLaufband); 
+			LagerMain.init.LaufbandMotor.Motorvorwaertsfahrenlassen(LagerMain.init.LaufbandMotor.GetMotorAdresse()); 
 		}
 		else{
-			if(LaufbandMotor.GetMotorStatus() == 2){
-				LaufbandMotor.Motorausschalten(Motor_AdresseLaufband); 
-				LaufbandMotor.Motorvorwaertsfahrenlassen(Motor_AdresseLaufband); 
+			if(LagerMain.init.LaufbandMotor.GetMotorStatus() == 2){
+				LagerMain.init.LaufbandMotor.Motorausschalten(LagerMain.init.LaufbandMotor.GetMotorAdresse()); 
+				LagerMain.init.LaufbandMotor.Motorvorwaertsfahrenlassen(LagerMain.init.LaufbandMotor.GetMotorAdresse()); 
 			}
 		}
 		System.out.println("Laufband: Laufband läuft jetzt vorwärts"); 
@@ -48,12 +46,12 @@ public class Laufband {
 
 	public void Bewegungrueckwaerts(){
 		if(StehtderMotor()){
-			LaufbandMotor.Motorrueckwaertsfahrenlassen(Motor_AdresseLaufband); 
+			LagerMain.init.LaufbandMotor.Motorrueckwaertsfahrenlassen(LagerMain.init.LaufbandMotor.GetMotorAdresse()); 
 		}
 		else{
-			if(LaufbandMotor.GetMotorStatus() == 1){
-				LaufbandMotor.Motorausschalten(Motor_AdresseLaufband); 
-				LaufbandMotor.Motorrueckwaertsfahrenlassen(Motor_AdresseLaufband); 
+			if(LagerMain.init.LaufbandMotor.GetMotorStatus() == 1){
+				LagerMain.init.LaufbandMotor.Motorausschalten(LagerMain.init.LaufbandMotor.GetMotorAdresse()); 
+				LagerMain.init.LaufbandMotor.Motorrueckwaertsfahrenlassen(LagerMain.init.LaufbandMotor.GetMotorAdresse()); 
 			}
 		}
 		System.out.println("Laufband: Laufband läuft jetzt rückwärts"); 
@@ -61,7 +59,7 @@ public class Laufband {
 	}
 	
 	public void LaufbandmotorAusschalten(){
-		LaufbandMotor.Motorausschalten(Motor_AdresseLaufband); 
+		LagerMain.init.LaufbandMotor.Motorausschalten(LagerMain.init.LaufbandMotor.GetMotorAdresse()); 
 	}
 
 }

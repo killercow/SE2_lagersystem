@@ -4,22 +4,12 @@ import Simulation.*;
 import java.util.*; 
 
 public class Stapler {
-	public Lagerplatz Lagerplatz; 
-	public Laufband laufband;
-	public int LaufbandMotorAdresse;
-	
-	private Motor motorXRichtung;
-	private static int motorXRichtungAdresse; 
-	private Motor motorYRichtung;
-	private static int motorYRichtungAdresse;
 
 	private int StaplerAdresse;
 	private boolean MotorfaehrtinXRichtung = false; 
 	private boolean MotorfaehrtinXRichtungrueckwarts = false; 
 	private boolean MotorfaehrtinYRichtunghoch = false;
 	private int MotorStatus; 
-	private Paket paket; 
-	private int Lagerplatznummer; 
 	private Random generator = new Random(); 
 	
 	public Stapler(){
@@ -55,68 +45,76 @@ public class Stapler {
 		}
 	}
 	
-	public void ZumLagerplatzfahren(){
+	public void ZumLagerplatzfahren(int lagerplatzNummer){
 		StaplerRichtunguebergeben('r');
-		Lagerplatznummer = Lagerplatz.GetLagerplatznummer(); 
-		Lagerplatz.StaplerKommtMitPaket(); 
-		System.out.println("Stapler: Stapler ist am Lagerplatz "+ Lagerplatznummer +" angekommen.");
-		motorXRichtung.Motorausschalten(motorXRichtungAdresse);
+		Lagerplatz lagerplatz = FindeLagerplatzAusArray(lagerplatzNummer); 
+		lagerplatz.StaplerKommtMitPaket(); 
+		System.out.println("Stapler: Stapler ist am Lagerplatz "+ lagerplatzNummer +" angekommen.");
+		LagerMain.init.StaplerMotorXRichtung.Motorausschalten(LagerMain.init.StaplerMotorXRichtung.GetMotorAdresse());
 		PaketaufnehmenvomLagerplatz(); 
 	}
 	
 
 	public boolean PaketaufnehmenvomLagerplatz() {
-		if(laufband.LaufbandMotor.GetMotorStatus() == 0){
-			laufband.LaufbandMotor.Motorvorwaertsfahrenlassen(LaufbandMotorAdresse); 
+		if(LagerMain.init.LaufbandMotor.GetMotorStatus() == 0){
+			LagerMain.init.LaufbandMotor.Motorvorwaertsfahrenlassen(LagerMain.init.LaufbandMotor.GetMotorAdresse()); 
 		}
 		else{
-			if(laufband.LaufbandMotor.GetMotorStatus() == 2){
-				laufband.LaufbandMotor.Motorausschalten(LaufbandMotorAdresse); 
-				laufband.LaufbandMotor.Motorvorwaertsfahrenlassen(LaufbandMotorAdresse); 
+			if(LagerMain.init.LaufbandMotor.GetMotorStatus() == 2){
+				LagerMain.init.LaufbandMotor.Motorausschalten(LagerMain.init.LaufbandMotor.GetMotorAdresse()); 
+				LagerMain.init.LaufbandMotor.Motorvorwaertsfahrenlassen(LagerMain.init.LaufbandMotor.GetMotorAdresse()); 
 			}
 		}
 		System.out.println("Stapler: Paket liegt auf dem Laufband."); 
-		laufband.LaufbandMotor.Motorausschalten(LaufbandMotorAdresse); 
+		LagerMain.init.LaufbandMotor.Motorausschalten(LagerMain.init.LaufbandMotor.GetMotorAdresse()); 
 		boolean istda = StaplerfaehrtzurAusgabezurueck();
 		return istda; 
 	}
 
 	public boolean PaketinAusgabeablegen() {
 		StaplerRichtunguebergeben('h');
-		laufband.LaufbandMotor.Motorvorwaertsfahrenlassen(LaufbandMotorAdresse);
+		LagerMain.init.LaufbandMotor.Motorvorwaertsfahrenlassen(LagerMain.init.LaufbandMotor.GetMotorAdresse());
 		return true; 
 	}
 
 	public void Paketaufnehmen(){
-		if(laufband.LaufbandMotor.GetMotorStatus() == 0){
-			laufband.LaufbandMotor.Motorvorwaertsfahrenlassen(LaufbandMotorAdresse); 
+		if(LagerMain.init.LaufbandMotor.GetMotorStatus() == 0){
+			LagerMain.init.LaufbandMotor.Motorvorwaertsfahrenlassen(LagerMain.init.LaufbandMotor.GetMotorAdresse()); 
 		}
 		else{
-			if(laufband.LaufbandMotor.GetMotorStatus() == 2){
-				laufband.LaufbandMotor.Motorausschalten(LaufbandMotorAdresse); 
-				laufband.LaufbandMotor.Motorvorwaertsfahrenlassen(LaufbandMotorAdresse); 
+			if(LagerMain.init.LaufbandMotor.GetMotorStatus() == 2){
+				LagerMain.init.LaufbandMotor.Motorausschalten(LagerMain.init.LaufbandMotor.GetMotorAdresse()); 
+				LagerMain.init.LaufbandMotor.Motorvorwaertsfahrenlassen(LagerMain.init.LaufbandMotor.GetMotorAdresse()); 
 			}
 		}
 		System.out.println("Stapler: Paket liegt auf dem Laufband."); 
-		laufband.LaufbandMotor.Motorausschalten(LaufbandMotorAdresse); 
-		StaplerfahertmitPaketzumLagerplatz(); 
+		LagerMain.init.LaufbandMotor.Motorausschalten(LagerMain.init.LaufbandMotor.GetMotorAdresse()); 
 	}
 	
-	private void StaplerfahertmitPaketzumLagerplatz(){
+	private Lagerplatz FindeLagerplatzAusArray(int lagerplatzNummer){
+		for(int i  = 0; i < 6; i++){
+			if(LagerMain.init.Lagerplatzarray[i].GetLagerplatznummer() == lagerplatzNummer ){
+				return LagerMain.init.Lagerplatzarray[i]; 
+			}
+		}
+		return null; 
+	}
+	
+	public void StaplerfahertmitPaketzumLagerplatz(int lagerplatzNummer){
 		StaplerRichtunguebergeben('r');
-		Lagerplatznummer = Lagerplatz.GetLagerplatznummer(); 
-		Lagerplatz.StaplerKommtMitPaket(); 
-		System.out.println("Stapler: Stapler ist am Lagerplatz "+ Lagerplatznummer +" angekommen.");
-		motorXRichtung.Motorausschalten(motorXRichtungAdresse);
-		Paketablegen(); 		
+		Lagerplatz lagerplatz = FindeLagerplatzAusArray(lagerplatzNummer); 
+		lagerplatz.StaplerKommtMitPaket(); 
+		System.out.println("Stapler: Stapler ist am Lagerplatz "+ lagerplatzNummer +" angekommen.");
+		LagerMain.init.StaplerMotorXRichtung.Motorausschalten(LagerMain.init.StaplerMotorXRichtung.GetMotorAdresse());
+		Paketablegen(lagerplatz); 		
 	}
 
-	private void Paketablegen(){
+	private void Paketablegen(Lagerplatz lagerplatz){
 		StaplerRichtunguebergeben('h');
-		laufband.LaufbandMotor.Motorvorwaertsfahrenlassen(LaufbandMotorAdresse);
-		Lagerplatz.PaketaufBRlegen(); 
+		LagerMain.init.LaufbandMotor.Motorvorwaertsfahrenlassen(LagerMain.init.LaufbandMotor.GetMotorAdresse());
+		lagerplatz.PaketaufBRlegen(); 
 		System.out.println("Stapler: Paket liegt im Lagerplatz.");
-		laufband.LaufbandMotor.Motorausschalten(LaufbandMotorAdresse);
+		LagerMain.init.LaufbandMotor.Motorausschalten(LagerMain.init.LaufbandMotor.GetMotorAdresse());
 		StaplerRichtunguebergeben('t');
 		StaplerfaehrtzurAusgabezurueck(); 
 	}
@@ -124,7 +122,7 @@ public class Stapler {
 	public boolean StaplerfaehrtzurAusgabezurueck(){
 		StaplerRichtunguebergeben('v');
 		System.out.println("Stapler: Stapler ist an der Ausgabe angekommen.");
-		motorXRichtung.Motorausschalten(motorXRichtungAdresse);
+		LagerMain.init.StaplerMotorXRichtung.Motorausschalten(LagerMain.init.StaplerMotorXRichtung.GetMotorAdresse());
 		return true; 
 	}
 	
@@ -137,27 +135,27 @@ public class Stapler {
 	}
 
 	public void InXRichtungFahren(char richtung){
-		if(StehtDerMotor(motorXRichtung)){
+		if(StehtDerMotor(LagerMain.init.StaplerMotorXRichtung)){
 			if(richtung == 'r'){
-				motorXRichtung.Motorrueckwaertsfahrenlassen(motorXRichtungAdresse); 
+				LagerMain.init.StaplerMotorXRichtung.Motorrueckwaertsfahrenlassen(LagerMain.init.StaplerMotorXRichtung.GetMotorAdresse()); 
 				MotorfaehrtinXRichtungrueckwarts = true;
 				
 			}
 			if(richtung == 'v'){
-				motorXRichtung.Motorvorwaertsfahrenlassen(motorXRichtungAdresse); 
+				LagerMain.init.StaplerMotorXRichtung.Motorvorwaertsfahrenlassen(LagerMain.init.StaplerMotorXRichtung.GetMotorAdresse()); 
 				MotorfaehrtinXRichtungrueckwarts = false;
 			}
 		}
 		else{
-			if(motorXRichtung.GetMotorStatus() == 2){
-				motorXRichtung.Motorausschalten(motorXRichtungAdresse); 
+			if(LagerMain.init.StaplerMotorXRichtung.GetMotorStatus() == 2){
+				LagerMain.init.StaplerMotorXRichtung.Motorausschalten(LagerMain.init.StaplerMotorXRichtung.GetMotorAdresse()); 
 				if(richtung == 'r'){
-					motorXRichtung.Motorrueckwaertsfahrenlassen(motorXRichtungAdresse); 
+					LagerMain.init.StaplerMotorXRichtung.Motorrueckwaertsfahrenlassen(LagerMain.init.StaplerMotorXRichtung.GetMotorAdresse()); 
 					MotorfaehrtinXRichtungrueckwarts = true;
 					
 				}
 				if(richtung == 'v'){
-					motorXRichtung.Motorvorwaertsfahrenlassen(motorXRichtungAdresse); 
+					LagerMain.init.StaplerMotorXRichtung.Motorvorwaertsfahrenlassen(LagerMain.init.StaplerMotorXRichtung.GetMotorAdresse()); 
 					MotorfaehrtinXRichtungrueckwarts = false;
 				}
 			}
@@ -166,27 +164,27 @@ public class Stapler {
 	}
 
 	public void InYRichtungfahren(char richtung){
-		if(StehtDerMotor(motorYRichtung)){
+		if(StehtDerMotor(LagerMain.init.StaplerMotorYRichtung)){
 			if(richtung == 'r'){
-				motorYRichtung.Motorhochfahrenlassen(motorYRichtungAdresse); 
+				LagerMain.init.StaplerMotorYRichtung.Motorhochfahrenlassen(LagerMain.init.StaplerMotorYRichtung.GetMotorAdresse()); 
 				MotorfaehrtinYRichtunghoch = true;
 				
 			}
 			if(richtung == 'v'){
-				motorYRichtung.Motorvorwaertsfahrenlassen(motorYRichtungAdresse); 
+				LagerMain.init.StaplerMotorYRichtung.Motorvorwaertsfahrenlassen(LagerMain.init.StaplerMotorYRichtung.GetMotorAdresse()); 
 				MotorfaehrtinYRichtunghoch = false;
 			}
 		}
 		else{
-			if(motorYRichtung.GetMotorStatus() == 1){
-				motorYRichtung.Motorausschalten(motorYRichtungAdresse);
+			if(LagerMain.init.StaplerMotorYRichtung.GetMotorStatus() == 1){
+				LagerMain.init.StaplerMotorYRichtung.Motorausschalten(LagerMain.init.StaplerMotorYRichtung.GetMotorAdresse());
 				if(richtung == 'r'){
-					motorYRichtung.Motorhochfahrenlassen(motorYRichtungAdresse); 
+					LagerMain.init.StaplerMotorYRichtung.Motorhochfahrenlassen(LagerMain.init.StaplerMotorYRichtung.GetMotorAdresse()); 
 					MotorfaehrtinYRichtunghoch = true;
 					
 				}
 				if(richtung == 'v'){
-					motorYRichtung.Motorvorwaertsfahrenlassen(motorYRichtungAdresse); 
+					LagerMain.init.StaplerMotorYRichtung.Motorvorwaertsfahrenlassen(LagerMain.init.StaplerMotorYRichtung.GetMotorAdresse()); 
 					MotorfaehrtinYRichtunghoch = false;
 				}
 			}			

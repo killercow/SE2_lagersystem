@@ -2,7 +2,7 @@ package Simulation;
 
 public class TasterZustand {
 
-	//public ITasterZustand aktuellerZustand; 
+	public ITasterZustand aktuellerZustand; 
 	private int Status; 
 	
 	public TasterZustand(){

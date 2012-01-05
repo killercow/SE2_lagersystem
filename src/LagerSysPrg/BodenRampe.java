@@ -1,18 +1,10 @@
 package LagerSysPrg;
-import Simulation.*;
 import java.util.*; 
 
 public class BodenRampe {
 	
 	public int BodenRampenAdresse; 
-	public Motor bodenRampenMotor;
-	private int bodenRampenMotorAdresse; 
 	public ZustandRampe zustandRampe;
-	private boolean Zustand;
-	private Taster Tasteroben;
-	private int TasterobenAdresse; 
-	private Taster Tasterunten;
-	private int TasteruntenAdresse; 
 	private ZustandRampe BodenRampeZustand = new ZustandRampe();
 	private Random generator = new Random(); 
 
@@ -34,7 +26,7 @@ public class BodenRampe {
 
 	public void BodenRampeausschalten(){
 		System.out.println("BodenRampe: Die BodenRampe wird ausgeschaltet.");
-		bodenRampenMotor.Motorausschalten(bodenRampenMotorAdresse);
+		LagerMain.init.BodenRampenMotor.Motorausschalten(LagerMain.init.BodenRampenMotor.GetMotorAdresse());
 		BodenRampeZustand.stoppen(); 
 	}
 	
@@ -46,15 +38,15 @@ public class BodenRampe {
 			return; 
 		}		
 		if(Status == 2){
-			bodenRampenMotor.Motortieffahrenlassen(bodenRampenMotorAdresse); 
-			if(Tasterunten.WartenAufTaster()){
+			LagerMain.init.BodenRampenMotor.Motortieffahrenlassen(LagerMain.init.BodenRampenMotor.GetMotorAdresse()); 
+			if(LagerMain.init.BodenRampeTaster_unten.WartenAufTaster()){
 				System.out.println("BodenRampe: Die BodenRampe ist unten angekommen. ");
-				bodenRampenMotor.Motorausschalten(bodenRampenMotorAdresse); 
+				LagerMain.init.BodenRampenMotor.Motorausschalten(LagerMain.init.BodenRampenMotor.GetMotorAdresse()); 
 				BodenRampeZustand.stoppen(); 
 			}
 			else{
 				System.out.println("BodenRampe: Fehler - Der Tasterunten wird nicht ausgelšst. ");
-				bodenRampenMotor.Motorausschalten(bodenRampenMotorAdresse); 
+				LagerMain.init.BodenRampenMotor.Motorausschalten(LagerMain.init.BodenRampenMotor.GetMotorAdresse()); 
 				BodenRampeZustand.stoppen(); 
 			}
 		} 
@@ -68,15 +60,15 @@ public class BodenRampe {
 			return; 
 		}	
 		if(Status == 1){
-			bodenRampenMotor.Motorhochfahrenlassen(bodenRampenMotorAdresse); 
-			if(Tasteroben.WartenAufTaster()){
+			LagerMain.init.BodenRampenMotor.Motorhochfahrenlassen(LagerMain.init.BodenRampenMotor.GetMotorAdresse()); 
+			if(LagerMain.init.BodenRampeTaster_oben.WartenAufTaster()){
 				System.out.println("BodenRampe: Die BodenRampe ist oben angekommen. ");
-				bodenRampenMotor.Motorausschalten(bodenRampenMotorAdresse); 
+				LagerMain.init.BodenRampenMotor.Motorausschalten(LagerMain.init.BodenRampenMotor.GetMotorAdresse()); 
 				BodenRampeZustand.stoppen();
 			}
 			else{
 				System.out.println("BodenRampe: Fehler - Der Tasteroben wird nicht ausgelšst. ");
-				bodenRampenMotor.Motorausschalten(bodenRampenMotorAdresse); 
+				LagerMain.init.BodenRampenMotor.Motorausschalten(LagerMain.init.BodenRampenMotor.GetMotorAdresse()); 
 				BodenRampeZustand.stoppen(); 
 			}
 		}

@@ -6,10 +6,6 @@ public class Lagerplatz {
 
 	private boolean belegt;
 	private int groesse;
-	public BodenRampe BodenRampe;
-	public Paket Paket;
-	public Taster Taster_Staplerangekommen;
-	public Taster Taster_PaketImPlatz; 
 	private int Lagerplatznummer;
 	private Random generator = new Random();
 	
@@ -31,19 +27,34 @@ public class Lagerplatz {
 	}
 	
 	public void StaplerKommtMitPaket(){
-		if(Taster_Staplerangekommen.WartenAufTaster()){
+		if(LagerMain.init.LagerplatzTaster_Staplerangekommen.WartenAufTaster()){
 			System.out.println("Lagerplatz: Der Stapler ist am Lagerplatz angekommen. "); 
-			BodenRampe.BodenRampeGeradeStellen(); 
+			LagerMain.init.BodenRampeLagerplatz.BodenRampeGeradeStellen(); 
 		}
 	}
 	
 	public void PaketaufBRlegen(){
-		BodenRampe.BodenRampeSchraegStellen(); 
-		if(Taster_PaketImPlatz.WartenAufTaster()){
+		LagerMain.init.BodenRampeLagerplatz.BodenRampeSchraegStellen(); 
+		if(LagerMain.init.LagerplatzTaster_PaketImPlatz.WartenAufTaster()){
 			System.out.println("Lagerplatz: Das Paket liegt im Fach ");
-			BodenRampe.BodenRampeGeradeStellen(); 
-			BodenRampe.BodenRampeausschalten(); 
+			this.belegt = true; 
+			LagerMain.init.BodenRampeLagerplatz.BodenRampeGeradeStellen(); 
+			LagerMain.init.BodenRampeLagerplatz.BodenRampeausschalten(); 
 		}
+	}
+	
+	public void PaketaufBRlegenAuslagern(){
+		LagerMain.init.BodenRampeLagerplatz.BodenRampeSchraegStellen(); 
+		if(LagerMain.init.LagerplatzTaster_PaketImPlatz.WartenAufTaster()){
+			System.out.println("Lagerplatz: Das Paket liegt im Fach ");
+			this.belegt = false; 
+			LagerMain.init.BodenRampeLagerplatz.BodenRampeGeradeStellen(); 
+			LagerMain.init.BodenRampeLagerplatz.BodenRampeausschalten(); 
+		}
+	}
+
+	public boolean getBelegt() {
+		return belegt;
 	}
 	
 	
