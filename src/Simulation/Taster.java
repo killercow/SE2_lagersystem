@@ -5,7 +5,7 @@ import java.util.*;
 public class Taster {
  
 	public int TasterAdresse;
-	private TasterZustand tasterZustand = new TasterZustand(); 
+	public boolean istTasteraktiv = false; 
 	private Random generator = new Random(); 
 
 	public Taster(){
@@ -20,8 +20,8 @@ public class Taster {
 		return TasterAdresse; 
 	}
 	
-	public int GetTasterStatus(){
-		return tasterZustand.getStatus(); 
+	public boolean GetTasterStatus(){
+		return istTasteraktiv;  
 	}
 	
 	public boolean WartenAufTaster(){
@@ -36,21 +36,21 @@ public class Taster {
 	
 	public void Tasteraktivieren(){
 		System.out.println("Taster: Der Taster wird aktiviert");
-		int Status = GetTasterStatus(); 
-		if(Status == 1){
+		boolean Status = GetTasterStatus(); 
+		if(Status == true){
 			System.out.println("Taster: Der Taster ist bereits aktiviert");
 		}
-		tasterZustand.aktiv();
+		istTasteraktiv = true;
 		
 	}
 	
 	public void Tasterdeaktivieren(){
 		System.out.println("Taster: Der Taster wird deaktiviert");
-		int Status = GetTasterStatus(); 
-		if(Status == 0){
+		boolean Status = GetTasterStatus(); 
+		if(Status == false){
 			System.out.println("Taster: Der Taster ist bereits deaktiviert");
 		}
-		tasterZustand.inaktiv();
+		istTasteraktiv = false; 
 	}
 
 

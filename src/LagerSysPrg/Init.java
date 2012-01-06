@@ -7,6 +7,8 @@ public class Init {
 	
 	public Stapler Stapler;
 	
+	public Laufband StaplerLaufband; 
+	
 	public BodenRampe[] BodenRampenarray = new BodenRampe[2]; 
 	public BodenRampe BodenRampeEAPlatz; 
 	public BodenRampe BodenRampeLagerplatz; 
@@ -48,7 +50,9 @@ public class Init {
 		EAPlatzGewichtssensor = new Gewichtsensor(); 
 		EAPlatzGewichtssensor.ErstelleAdresse(); 
 		Stapler = new Stapler(); 
-		Stapler.ErstelleStaplerAdresse(); 
+		Stapler.ErstelleStaplerAdresse();
+		StaplerLaufband = new Laufband(); 
+		StaplerLaufband.ErstelleLaufbandAdresse(); 
 		EAPlatz = new EinAusgPlatz(); 
 		EAPlatz.ErstelleEinAusgabePlatzAdresse(); 
 		Klappentuer = new KlappenTuer(); 

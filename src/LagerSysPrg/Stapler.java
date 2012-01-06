@@ -57,12 +57,12 @@ public class Stapler {
 
 	public boolean PaketaufnehmenvomLagerplatz() {
 		if(LagerMain.init.LaufbandMotor.GetMotorStatus() == 0){
-			LagerMain.init.LaufbandMotor.Motorvorwaertsfahrenlassen(LagerMain.init.LaufbandMotor.GetMotorAdresse()); 
+			LagerMain.init.StaplerLaufband.Bewegungvorwaerts(); 
 		}
 		else{
 			if(LagerMain.init.LaufbandMotor.GetMotorStatus() == 2){
 				LagerMain.init.LaufbandMotor.Motorausschalten(LagerMain.init.LaufbandMotor.GetMotorAdresse()); 
-				LagerMain.init.LaufbandMotor.Motorvorwaertsfahrenlassen(LagerMain.init.LaufbandMotor.GetMotorAdresse()); 
+				LagerMain.init.StaplerLaufband.Bewegungvorwaerts();  
 			}
 		}
 		System.out.println("Stapler: Paket liegt auf dem Laufband."); 
@@ -79,12 +79,12 @@ public class Stapler {
 
 	public void Paketaufnehmen(){
 		if(LagerMain.init.LaufbandMotor.GetMotorStatus() == 0){
-			LagerMain.init.LaufbandMotor.Motorvorwaertsfahrenlassen(LagerMain.init.LaufbandMotor.GetMotorAdresse()); 
+			LagerMain.init.StaplerLaufband.Bewegungrueckwaerts(); 
 		}
 		else{
 			if(LagerMain.init.LaufbandMotor.GetMotorStatus() == 2){
 				LagerMain.init.LaufbandMotor.Motorausschalten(LagerMain.init.LaufbandMotor.GetMotorAdresse()); 
-				LagerMain.init.LaufbandMotor.Motorvorwaertsfahrenlassen(LagerMain.init.LaufbandMotor.GetMotorAdresse()); 
+				LagerMain.init.StaplerLaufband.Bewegungrueckwaerts();  
 			}
 		}
 		System.out.println("Stapler: Paket liegt auf dem Laufband."); 

@@ -205,12 +205,17 @@ public class LagerSysGUI{
 			einlagern.setEnabled(false);
 			CodeField.setText("");
 			freigabe = true;
+			//TODO: Auf Eingabe des Paketcodes warten
+			CodeField.setText(Integer.toString(Paket.GetPaketCode())); 
 			int paketCode = Integer.parseInt(CodeField.getText()); 
 			Paket paket = FindePaketImPaketarray(paketCode); 
 			int lagerplatzNummer = paket.getLagerplatznummer(); 
 			paket.Paketauslagern(lagerplatzNummer); 
-			PreisField.setText(Integer.toString(paket.getPreis())); 
+			PreisField.setText(Integer.toString(paket.getPreis()) + " €"); 
+			//TODO: Kasse aufrufen und auf Bestätigung warten
 			paket.finalize(); 
+			auslagern.setEnabled(true);  
+			
 			
 		}
 		else if(comand=="Einlagern"){
@@ -243,6 +248,8 @@ public class LagerSysGUI{
 		  		if(paketHatPlatzGefunden){
 		  			System.out.println("Paket hat einen Platz gefunden!"); 
 		  			Paket.Paketeinlagern();
+		  			CodeField.setText(Integer.toString(Paket.GetPaketCode())); 
+		  			einlagern.setEnabled(true);  
 		  		}
 		  		else{
 		  			System.out.println("Das Paket hat keinen Platz gefunden!");

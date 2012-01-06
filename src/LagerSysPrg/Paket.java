@@ -22,7 +22,6 @@ public class Paket {
 		nummerVonPaketen--; 
 	}
 	
-	
 
 	public void ErstellePaketCode() {
 		Random generator = new Random(); 
